@@ -162,6 +162,138 @@ class SudokuSolver {
       }
 
     }
+
+
+
+    let invalidSudo = false
+
+    // check validation
+      // qube1
+      for (let i=0; i < qube1st.length; i++ ){
+        for(let y=0; y < 3; y++){
+
+          if(qube1st[0][y] != '.'){
+            if( qube1st[1].includes(qube1st[0][y]) == true ){ invalidSudo = true }
+            if( qube1st[2].includes(qube1st[0][y]) == true ){ invalidSudo = true }
+          }
+          if(qube1st[1][y] != '.'){
+            if( qube1st[2].includes(qube1st[1][y]) == true ){ invalidSudo = true }
+          }          
+        }
+      }
+
+      // qube2
+      for (let i=0; i < qube2nd.length; i++ ){
+        for(let y=0; y < 3; y++){
+
+          if(qube2nd[0][y] != '.'){
+            if( qube2nd[1].includes(qube2nd[0][y]) == true ){ invalidSudo = true }
+            if( qube2nd[2].includes(qube2nd[0][y]) == true ){ invalidSudo = true }
+          }
+          if(qube2nd[1][y] != '.'){
+            if( qube2nd[2].includes(qube2nd[1][y]) == true ){ invalidSudo = true }
+          }          
+        }
+      }
+
+      // qube3
+      for (let i=0; i < qube3rd.length; i++ ){
+        for(let y=0; y < 3; y++){
+
+          if(qube3rd[0][y] != '.'){
+            if( qube3rd[1].includes(qube3rd[0][y]) == true ){ invalidSudo = true }
+            if( qube3rd[2].includes(qube3rd[0][y]) == true ){ invalidSudo = true }
+          }
+          if(qube3rd[1][y] != '.'){
+            if( qube3rd[2].includes(qube3rd[1][y]) == true ){ invalidSudo = true }
+          }          
+        }
+      }
+
+      // qube4
+      for (let i=0; i < qube4th.length; i++ ){
+        for(let y=0; y < 3; y++){
+
+          if(qube4th[0][y] != '.'){
+            if( qube4th[1].includes(qube4th[0][y]) == true ){ invalidSudo = true }
+            if( qube4th[2].includes(qube4th[0][y]) == true ){ invalidSudo = true }
+          }
+          if(qube4th[1][y] != '.'){
+            if( qube4th[2].includes(qube4th[1][y]) == true ){ invalidSudo = true }
+          }          
+        }
+      }
+
+      // qube5
+      for (let i=0; i < qube5th.length; i++ ){
+        for(let y=0; y < 3; y++){
+
+          if(qube5th[0][y] != '.'){
+            if( qube5th[1].includes(qube5th[0][y]) == true ){ invalidSudo = true }
+            if( qube5th[2].includes(qube5th[0][y]) == true ){ invalidSudo = true }
+          }
+          if(qube5th[1][y] != '.'){
+            if( qube5th[2].includes(qube5th[1][y]) == true ){ invalidSudo = true }
+          }          
+        }
+      }
+
+      // qube6
+      for (let i=0; i < qube6th.length; i++ ){
+        for(let y=0; y < 3; y++){
+
+          if(qube6th[0][y] != '.'){
+            if( qube6th[1].includes(qube6th[0][y]) == true ){ invalidSudo = true }
+            if( qube6th[2].includes(qube6th[0][y]) == true ){ invalidSudo = true }
+          }
+          if(qube6th[1][y] != '.'){
+            if( qube6th[2].includes(qube6th[1][y]) == true ){ invalidSudo = true }
+          }          
+        }
+      }
+
+      // qube7
+      for (let i=0; i < qube7th.length; i++ ){
+        for(let y=0; y < 3; y++){
+
+          if(qube7th[0][y] != '.'){
+            if( qube7th[1].includes(qube7th[0][y]) == true ){ invalidSudo = true }
+            if( qube7th[2].includes(qube7th[0][y]) == true ){ invalidSudo = true }
+          }
+          if(qube7th[1][y] != '.'){
+            if( qube7th[2].includes(qube7th[1][y]) == true ){ invalidSudo = true }
+          }          
+        }
+      }
+
+      // qube8
+      for (let i=0; i < qube8th.length; i++ ){
+        for(let y=0; y < 3; y++){
+
+          if(qube8th[0][y] != '.'){
+            if( qube8th[1].includes(qube8th[0][y]) == true ){ invalidSudo = true }
+            if( qube8th[2].includes(qube8th[0][y]) == true ){ invalidSudo = true }
+          }
+          if(qube8th[1][y] != '.'){
+            if( qube8th[2].includes(qube8th[1][y]) == true ){ invalidSudo = true }
+          }          
+        }
+      }
+
+      // qube9
+      for (let i=0; i < qube9th.length; i++ ){
+        for(let y=0; y < 3; y++){
+
+          if(qube9th[0][y] != '.'){
+            if( qube9th[1].includes(qube9th[0][y]) == true ){ invalidSudo = true }
+            if( qube9th[2].includes(qube9th[0][y]) == true ){ invalidSudo = true }
+          }
+          if(qube9th[1][y] != '.'){
+            if( qube9th[2].includes(qube9th[1][y]) == true ){ invalidSudo = true }
+          }          
+        }
+      }
+    
     
     console.log('row1 '+ row1)
     console.log('row2 '+ row2)
@@ -184,6 +316,10 @@ class SudokuSolver {
     console.log('qube7th '+ qube7th[0]+' / '+qube7th[1]+' / '+qube7th[2])
     console.log('qube8th '+ qube8th[0]+' / '+qube8th[1]+' / '+qube8th[2])
     console.log('qube9th '+ qube9th[0]+' / '+qube9th[1]+' / '+qube9th[2])
+
+    if(invalidSudo == true){
+      console.log('invalid sudoku')
+    }
     
   }
 }
