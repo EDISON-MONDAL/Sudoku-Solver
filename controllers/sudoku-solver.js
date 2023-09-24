@@ -16,7 +16,24 @@ class SudokuSolver {
   }
 
   solve(puzzleString) {
+    /*
+    for(let i=0; i < puzzleString.length; i++){
+      console.log( puzzleString[i] )
+    }
+    */
+    let stringCount = 0
     
+    const A2I = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I']
+    for (let i=0; i < A2I.length; i++ ){
+      console.log(A2I[i])
+      /*
+      for(let y=0; y < 9; y++){
+
+      }
+      */
+
+    }
+
   }
 }
 
