@@ -9,6 +9,8 @@ module.exports = function (app) {
   app.route('/api/check')
     .post((req, res) => {
       let {puzzle, coordinate, value} = req.body
+      let row
+      let column
 
       if(!puzzle || puzzle == '' || !coordinate || coordinate == '' || !value || value == ''){
         return res.json( { error: 'Required field(s) missing' } )
@@ -26,10 +28,10 @@ module.exports = function (app) {
       coordinate = coordinate.toUpperCase()
 
       if(coordinate.length == 2){
-        const character = coordinate.slice(0, 1)
-        const letter = coordinate.slice(1)
+        row = coordinate.slice(0, 1)
+        column = coordinate.slice(1)
         
-        if(/[A-I]/.test(character) == false || /[1-9]/.test(letter) == false){
+        if(/[A-I]/.test( row ) == false || /[1-9]/.test( column ) == false){
           return res.json( { error: 'Invalid coordinate'} )
         }        
       } else return res.json( { error: 'Invalid coordinate'} )
@@ -45,8 +47,7 @@ module.exports = function (app) {
       
       
 
-      console.log(coordinate)
-      console.log(value)
+      const regionReplacement = solver.checkRegionPlacement( puzzle, row, column, value )
     });
 
     
