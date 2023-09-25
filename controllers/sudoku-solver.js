@@ -75,6 +75,41 @@ class SudokuSolver {
       []
     ]
 
+    const column1 = []
+    const column2 = []
+    const column3 = []
+    const column4 = []
+    const column5 = []
+    const column6 = []
+    const column7 = []
+    const column8 = []
+    const column9 = []
+
+
+    function putInColumn(y, string){
+      if( y==0 ){
+        column1.push( string )
+      }else if( y==1 ){
+        column2.push( string )
+      }else if( y==2 ){
+        column3.push( string )
+      }else if( y==3 ){
+        column4.push( string )
+      }else if( y==4 ){
+        column5.push( string )
+      }else if( y==5 ){
+        column6.push( string )
+      }else if( y==6 ){
+        column7.push( string )
+      }else if( y==7 ){
+        column8.push( string )
+      }else if( y==8 ){
+        column9.push( string )
+      }
+
+    }
+
+
 
     let stringCount = 0
     
@@ -85,76 +120,120 @@ class SudokuSolver {
 
         if( A2I[i] == 'A'){
           row1.push( puzzleString[stringCount] )
+
           // qube 1 - row 1
           if( y==0 || y==1 || y==2 ){ qube1st[0].push( puzzleString[stringCount] ) }
           // qube 2 - row 1
           if( y==3 || y==4 || y==5 ){ qube2nd[0].push( puzzleString[stringCount] ) }
           // qube 3 - row 1
           if( y==6 || y==7 || y==8 ){ qube3rd[0].push( puzzleString[stringCount] ) }
+
+          // column
+          putInColumn(y, puzzleString[stringCount])
+          
         } else if( A2I[i] == 'B'){
           row2.push( puzzleString[stringCount] )
+
           // qube 1 - row 2
           if( y==0 || y==1 || y==2 ){ qube1st[1].push( puzzleString[stringCount] ) }
           // qube 2 - row 2
           if( y==3 || y==4 || y==5 ){ qube2nd[1].push( puzzleString[stringCount] ) }
           // qube 3 - row 2
           if( y==6 || y==7 || y==8 ){ qube3rd[1].push( puzzleString[stringCount] ) }
+
+          // column
+          putInColumn(y, puzzleString[stringCount])
+
         } else if( A2I[i] == 'C'){
           row3.push( puzzleString[stringCount] )
+
           // qube 1 - row 3
           if( y==0 || y==1 || y==2 ){ qube1st[2].push( puzzleString[stringCount] ) }
           // qube 2 - row 3
           if( y==3 || y==4 || y==5 ){ qube2nd[2].push( puzzleString[stringCount] ) }
           // qube 3 - row 3
           if( y==6 || y==7 || y==8 ){ qube3rd[2].push( puzzleString[stringCount] ) }
+
+          // column
+          putInColumn(y, puzzleString[stringCount])
+
         } else if( A2I[i] == 'D'){
           row4.push( puzzleString[stringCount] )
+
           // qube 4 - row 1
           if( y==0 || y==1 || y==2 ){ qube4th[0].push( puzzleString[stringCount] ) }
           // qube 5 - row 1
           if( y==3 || y==4 || y==5 ){ qube5th[0].push( puzzleString[stringCount] ) }
           // qube 6 - row 1
           if( y==6 || y==7 || y==8 ){ qube6th[0].push( puzzleString[stringCount] ) }
+
+          // column
+          putInColumn(y, puzzleString[stringCount])
+
         } else if( A2I[i] == 'E'){
           row5.push( puzzleString[stringCount] )
+
           // qube 4 - row 2
           if( y==0 || y==1 || y==2 ){ qube4th[1].push( puzzleString[stringCount] ) }
           // qube 5 - row 2
           if( y==3 || y==4 || y==5 ){ qube5th[1].push( puzzleString[stringCount] ) }
           // qube 6 - row 2
           if( y==6 || y==7 || y==8 ){ qube6th[1].push( puzzleString[stringCount] ) }
+
+          // column
+          putInColumn(y, puzzleString[stringCount])
+
         } else if( A2I[i] == 'F'){
           row6.push( puzzleString[stringCount] )
+
           // qube 4 - row 3
           if( y==0 || y==1 || y==2 ){ qube4th[2].push( puzzleString[stringCount] ) }
           // qube 5 - row 3
           if( y==3 || y==4 || y==5 ){ qube5th[2].push( puzzleString[stringCount] ) }
           // qube 6 - row 3
           if( y==6 || y==7 || y==8 ){ qube6th[2].push( puzzleString[stringCount] ) }
+
+          // column
+          putInColumn(y, puzzleString[stringCount])
+
         } else if( A2I[i] == 'G'){
           row7.push( puzzleString[stringCount] )
+
           // qube 7 - row 1
           if( y==0 || y==1 || y==2 ){ qube7th[0].push( puzzleString[stringCount] ) }
           // qube 8 - row 1
           if( y==3 || y==4 || y==5 ){ qube8th[0].push( puzzleString[stringCount] ) }
           // qube 9 - row 1
           if( y==6 || y==7 || y==8 ){ qube9th[0].push( puzzleString[stringCount] ) }
+
+          // column
+          putInColumn(y, puzzleString[stringCount])
+
         } else if( A2I[i] == 'H'){
           row8.push( puzzleString[stringCount] )
+
           // qube 7 - row 2
           if( y==0 || y==1 || y==2 ){ qube7th[1].push( puzzleString[stringCount] ) }
           // qube 8 - row 2
           if( y==3 || y==4 || y==5 ){ qube8th[1].push( puzzleString[stringCount] ) }
           // qube 9 - row 2
           if( y==6 || y==7 || y==8 ){ qube9th[1].push( puzzleString[stringCount] ) }
+
+          // column
+          putInColumn(y, puzzleString[stringCount])
+
         } else if( A2I[i] == 'I'){
           row9.push( puzzleString[stringCount] )
+
           // qube 7 - row 3
           if( y==0 || y==1 || y==2 ){ qube7th[2].push( puzzleString[stringCount] ) }
           // qube 8 - row 3
           if( y==3 || y==4 || y==5 ){ qube8th[2].push( puzzleString[stringCount] ) }
           // qube 9 - row 3
           if( y==6 || y==7 || y==8 ){ qube9th[2].push( puzzleString[stringCount] ) }
+
+          // column
+          putInColumn(y, puzzleString[stringCount])
         }
 
         stringCount++
@@ -355,15 +434,61 @@ class SudokuSolver {
       }
 
     // columns
-    for(let i=0; i < 9; i++){
-      if(row1[i] !== '.'){
+      function checkInColumn(column){
+        for(let i=0; i < column.length; i++){
+          if(column[i] !== '.'){
 
-        
+            for(let y=0; y < column.length; y++){
+              if( i!==y && column[i] == column[y]) {
+
+                return true
+              }
+            }
+          }
+        }
       }
-    }  
+
+      // column 1
+      if( checkInColumn(column1) == true){
+        invalidSudo = true;
+      }
+      // column 2
+      if( checkInColumn(column2) == true){
+        invalidSudo = true;
+      }
+      // column 3
+      if( checkInColumn(column3) == true){
+        invalidSudo = true;
+      }
+      // column 4
+      if( checkInColumn(column4) == true){
+        invalidSudo = true;
+      }
+      // column 5
+      if( checkInColumn(column5) == true){
+        invalidSudo = true;
+      }
+      // column 6
+      if( checkInColumn(column6) == true){
+        invalidSudo = true;
+      }
+      // column 7
+      if( checkInColumn(column7) == true){
+        invalidSudo = true;
+      }
+      // column 8
+      if( checkInColumn(column8) == true){
+        invalidSudo = true;
+      }
+      // column 9
+      if( checkInColumn(column9) == true){
+        invalidSudo = true;
+      }
       
     
+      
     
+    /*
     console.log('row1 '+ row1)
     console.log('row2 '+ row2)
     console.log('row3 '+ row3)
@@ -386,9 +511,25 @@ class SudokuSolver {
     console.log('qube8th '+ qube8th[0]+' / '+qube8th[1]+' / '+qube8th[2])
     console.log('qube9th '+ qube9th[0]+' / '+qube9th[1]+' / '+qube9th[2])
 
+    console.log('column1 '+ column1)
+    console.log('column2 '+ column2)
+    console.log('column3 '+ column3)
+    console.log('column4 '+ column4)
+    console.log('column5 '+ column5)
+    console.log('column6 '+ column6)
+    console.log('column7 '+ column7)
+    console.log('column8 '+ column8)
+    console.log('column9 '+ column9)
+    
+
     if(invalidSudo == true){
       console.log('invalid sudoku')
     }
+    */
+
+    
+    return invalidSudo
+    // 769235418851496372432178956174569283395842761628713549283657194516924837947381625
     
   }
 }

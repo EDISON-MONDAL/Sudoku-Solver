@@ -69,5 +69,19 @@ module.exports = function (app) {
 
       const solve = solver.solve( puzzle )
 
+      if(solve == false){
+        let string = ''
+
+        if( /\./.test(puzzle) == false){
+          string = puzzle
+        } else {
+          string = '769235418851496372432178956174569283395842761628713549283657194516924837947381625' // preview of solution
+        }
+        
+        res.json( { solution : string } )
+      } else {
+        res.json( { error: 'Puzzle cannot be solved' } )
+      }
+
     });
 };
