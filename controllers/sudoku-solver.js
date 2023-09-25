@@ -166,6 +166,7 @@ class SudokuSolver {
 
 
     let invalidSudo = false
+    let invalidRegion = false
 
     // check validation
       // qube1
@@ -173,11 +174,11 @@ class SudokuSolver {
         for(let y=0; y < 3; y++){
 
           if(qube1st[0][y] != '.'){
-            if( qube1st[1].includes(qube1st[0][y]) == true ){ invalidSudo = true }
-            if( qube1st[2].includes(qube1st[0][y]) == true ){ invalidSudo = true }
+            if( qube1st[1].includes(qube1st[0][y]) == true ){ invalidSudo = true; invalidRegion = true; }
+            if( qube1st[2].includes(qube1st[0][y]) == true ){ invalidSudo = true; invalidRegion = true; }
           }
           if(qube1st[1][y] != '.'){
-            if( qube1st[2].includes(qube1st[1][y]) == true ){ invalidSudo = true }
+            if( qube1st[2].includes(qube1st[1][y]) == true ){ invalidSudo = true; invalidRegion = true; }
           }          
         }
       }
@@ -187,11 +188,11 @@ class SudokuSolver {
         for(let y=0; y < 3; y++){
 
           if(qube2nd[0][y] != '.'){
-            if( qube2nd[1].includes(qube2nd[0][y]) == true ){ invalidSudo = true }
-            if( qube2nd[2].includes(qube2nd[0][y]) == true ){ invalidSudo = true }
+            if( qube2nd[1].includes(qube2nd[0][y]) == true ){ invalidSudo = true; invalidRegion = true; }
+            if( qube2nd[2].includes(qube2nd[0][y]) == true ){ invalidSudo = true; invalidRegion = true; }
           }
           if(qube2nd[1][y] != '.'){
-            if( qube2nd[2].includes(qube2nd[1][y]) == true ){ invalidSudo = true }
+            if( qube2nd[2].includes(qube2nd[1][y]) == true ){ invalidSudo = true; invalidRegion = true; }
           }          
         }
       }
@@ -201,11 +202,11 @@ class SudokuSolver {
         for(let y=0; y < 3; y++){
 
           if(qube3rd[0][y] != '.'){
-            if( qube3rd[1].includes(qube3rd[0][y]) == true ){ invalidSudo = true }
-            if( qube3rd[2].includes(qube3rd[0][y]) == true ){ invalidSudo = true }
+            if( qube3rd[1].includes(qube3rd[0][y]) == true ){ invalidSudo = true; invalidRegion = true; }
+            if( qube3rd[2].includes(qube3rd[0][y]) == true ){ invalidSudo = true; invalidRegion = true; }
           }
           if(qube3rd[1][y] != '.'){
-            if( qube3rd[2].includes(qube3rd[1][y]) == true ){ invalidSudo = true }
+            if( qube3rd[2].includes(qube3rd[1][y]) == true ){ invalidSudo = true; invalidRegion = true; }
           }          
         }
       }
@@ -215,11 +216,11 @@ class SudokuSolver {
         for(let y=0; y < 3; y++){
 
           if(qube4th[0][y] != '.'){
-            if( qube4th[1].includes(qube4th[0][y]) == true ){ invalidSudo = true }
-            if( qube4th[2].includes(qube4th[0][y]) == true ){ invalidSudo = true }
+            if( qube4th[1].includes(qube4th[0][y]) == true ){ invalidSudo = true; invalidRegion = true; }
+            if( qube4th[2].includes(qube4th[0][y]) == true ){ invalidSudo = true; invalidRegion = true; }
           }
           if(qube4th[1][y] != '.'){
-            if( qube4th[2].includes(qube4th[1][y]) == true ){ invalidSudo = true }
+            if( qube4th[2].includes(qube4th[1][y]) == true ){ invalidSudo = true; invalidRegion = true; }
           }          
         }
       }
@@ -229,11 +230,11 @@ class SudokuSolver {
         for(let y=0; y < 3; y++){
 
           if(qube5th[0][y] != '.'){
-            if( qube5th[1].includes(qube5th[0][y]) == true ){ invalidSudo = true }
-            if( qube5th[2].includes(qube5th[0][y]) == true ){ invalidSudo = true }
+            if( qube5th[1].includes(qube5th[0][y]) == true ){ invalidSudo = true; invalidRegion = true; }
+            if( qube5th[2].includes(qube5th[0][y]) == true ){ invalidSudo = true; invalidRegion = true; }
           }
           if(qube5th[1][y] != '.'){
-            if( qube5th[2].includes(qube5th[1][y]) == true ){ invalidSudo = true }
+            if( qube5th[2].includes(qube5th[1][y]) == true ){ invalidSudo = true; invalidRegion = true; }
           }          
         }
       }
@@ -243,11 +244,11 @@ class SudokuSolver {
         for(let y=0; y < 3; y++){
 
           if(qube6th[0][y] != '.'){
-            if( qube6th[1].includes(qube6th[0][y]) == true ){ invalidSudo = true }
-            if( qube6th[2].includes(qube6th[0][y]) == true ){ invalidSudo = true }
+            if( qube6th[1].includes(qube6th[0][y]) == true ){ invalidSudo = true; invalidRegion = true; }
+            if( qube6th[2].includes(qube6th[0][y]) == true ){ invalidSudo = true; invalidRegion = true; }
           }
           if(qube6th[1][y] != '.'){
-            if( qube6th[2].includes(qube6th[1][y]) == true ){ invalidSudo = true }
+            if( qube6th[2].includes(qube6th[1][y]) == true ){ invalidSudo = true; invalidRegion = true; }
           }          
         }
       }
@@ -257,11 +258,11 @@ class SudokuSolver {
         for(let y=0; y < 3; y++){
 
           if(qube7th[0][y] != '.'){
-            if( qube7th[1].includes(qube7th[0][y]) == true ){ invalidSudo = true }
-            if( qube7th[2].includes(qube7th[0][y]) == true ){ invalidSudo = true }
+            if( qube7th[1].includes(qube7th[0][y]) == true ){ invalidSudo = true; invalidRegion = true; }
+            if( qube7th[2].includes(qube7th[0][y]) == true ){ invalidSudo = true; invalidRegion = true; }
           }
           if(qube7th[1][y] != '.'){
-            if( qube7th[2].includes(qube7th[1][y]) == true ){ invalidSudo = true }
+            if( qube7th[2].includes(qube7th[1][y]) == true ){ invalidSudo = true; invalidRegion = true; }
           }          
         }
       }
@@ -271,11 +272,11 @@ class SudokuSolver {
         for(let y=0; y < 3; y++){
 
           if(qube8th[0][y] != '.'){
-            if( qube8th[1].includes(qube8th[0][y]) == true ){ invalidSudo = true }
-            if( qube8th[2].includes(qube8th[0][y]) == true ){ invalidSudo = true }
+            if( qube8th[1].includes(qube8th[0][y]) == true ){ invalidSudo = true; invalidRegion = true; }
+            if( qube8th[2].includes(qube8th[0][y]) == true ){ invalidSudo = true; invalidRegion = true; }
           }
           if(qube8th[1][y] != '.'){
-            if( qube8th[2].includes(qube8th[1][y]) == true ){ invalidSudo = true }
+            if( qube8th[2].includes(qube8th[1][y]) == true ){ invalidSudo = true; invalidRegion = true; }
           }          
         }
       }
@@ -285,14 +286,32 @@ class SudokuSolver {
         for(let y=0; y < 3; y++){
 
           if(qube9th[0][y] != '.'){
-            if( qube9th[1].includes(qube9th[0][y]) == true ){ invalidSudo = true }
-            if( qube9th[2].includes(qube9th[0][y]) == true ){ invalidSudo = true }
+            if( qube9th[1].includes(qube9th[0][y]) == true ){ invalidSudo = true; invalidRegion = true; }
+            if( qube9th[2].includes(qube9th[0][y]) == true ){ invalidSudo = true; invalidRegion = true; }
           }
           if(qube9th[1][y] != '.'){
-            if( qube9th[2].includes(qube9th[1][y]) == true ){ invalidSudo = true }
+            if( qube9th[2].includes(qube9th[1][y]) == true ){ invalidSudo = true; invalidRegion = true; }
           }          
         }
       }
+    
+    // rows
+    let invalidRow = false
+
+      // row 1
+      for(let i=0; i < row1.length; i++){
+        if(row1[i] !== '.'){
+
+          for(let y=0; y < row1.length; y++){
+            if( i!==y && row1[i] == row1[y]) {
+
+              invalidSudo = true; 
+              invalidRow = true;
+            }
+          }
+        }
+      }
+      
     
     
     console.log('row1 '+ row1)
