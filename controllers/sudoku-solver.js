@@ -3,12 +3,294 @@ class SudokuSolver {
   validate(puzzleString) {
   }
 
-  checkRowPlacement(puzzleString, row, column, value) {
+  checkRowPlacement(puzzleString, row, column, values) {
+    let value = values.toString()
+    const columnIndexArr = column - 1
 
+    const row1 = []
+    const row2 = []
+    const row3 = []
+    const row4 = []
+    const row5 = []
+    const row6 = []
+    const row7 = []
+    const row8 = []
+    const row9 = []
+
+    let stringCount = 0
+    
+    const A2I = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I']
+    for (let i=0; i < A2I.length; i++ ){
+
+      for(let y=0; y < 9; y++){
+
+        if( A2I[i] == 'A'){
+          row1.push( puzzleString[stringCount] )
+          
+        } else if( A2I[i] == 'B'){
+          row2.push( puzzleString[stringCount] )
+
+        } else if( A2I[i] == 'C'){
+          row3.push( puzzleString[stringCount] )
+
+        } else if( A2I[i] == 'D'){
+          row4.push( puzzleString[stringCount] )
+
+        } else if( A2I[i] == 'E'){
+          row5.push( puzzleString[stringCount] )
+
+        } else if( A2I[i] == 'F'){
+          row6.push( puzzleString[stringCount] )
+
+        } else if( A2I[i] == 'G'){
+          row7.push( puzzleString[stringCount] )
+
+        } else if( A2I[i] == 'H'){
+          row8.push( puzzleString[stringCount] )
+
+        } else if( A2I[i] == 'I'){
+          row9.push( puzzleString[stringCount] )
+        }
+
+        stringCount++
+
+      }
+    }
+
+
+
+    let invalidSudo = false
+
+    // rows
+    function checkInRow(row, value){
+      return row.includes( value )      
+    }
+
+    // row 1 - A
+    if( row == 'A'){
+      if( checkInRow(row1, value) == true){
+        invalidSudo = true;
+      }
+
+      // coordinate
+      console.log('--------- '+ row1[columnIndexArr])
+    }
+
+    // row 2 - B
+    if( row == 'B'){
+      if( checkInRow(row2, value) == true){
+        invalidSudo = true;
+      }
+    }
+
+    // row 3 - C
+    if( row == 'C'){
+      if( checkInRow(row3, value) == true){
+        invalidSudo = true;
+      }
+    }
+
+    // row 4 - D
+    if( row == 'D'){
+      if( checkInRow(row4, value) == true){
+        invalidSudo = true;
+      }
+    }
+
+    // row 5 - E
+    if( row == 'E'){
+      if( checkInRow(row5, value) == true){
+        invalidSudo = true;
+      }
+    }
+
+    // row 6 - F
+    if( row == 'F'){
+      if( checkInRow(row6, value) == true){
+        invalidSudo = true;
+      }
+    }
+
+    // row 7 - G
+    if( row == 'G'){
+      if( checkInRow(row7, value) == true){
+        invalidSudo = true;
+      }
+    }
+
+    // row 8 - H
+    if( row == 'H'){
+      if( checkInRow(row8, value) == true){
+        invalidSudo = true;
+      }
+    }
+
+    // row 9 - I
+    if( row == 'I'){
+      if( checkInRow(row9, value) == true){
+        invalidSudo = true;
+      }
+    }
+
+    console.log('invalidSudo in row '+ invalidSudo)
+    return invalidSudo
   }
 
-  checkColPlacement(puzzleString, row, column, value) {
+  checkColPlacement(puzzleString, row, column, values) {
+    let value = values.toString()
 
+    const column1 = []
+    const column2 = []
+    const column3 = []
+    const column4 = []
+    const column5 = []
+    const column6 = []
+    const column7 = []
+    const column8 = []
+    const column9 = []
+
+
+    function putInColumn(y, string){
+      if( y==0 ){
+        column1.push( string )
+      }else if( y==1 ){
+        column2.push( string )
+      }else if( y==2 ){
+        column3.push( string )
+      }else if( y==3 ){
+        column4.push( string )
+      }else if( y==4 ){
+        column5.push( string )
+      }else if( y==5 ){
+        column6.push( string )
+      }else if( y==6 ){
+        column7.push( string )
+      }else if( y==7 ){
+        column8.push( string )
+      }else if( y==8 ){
+        column9.push( string )
+      }
+
+    }
+
+
+
+    let stringCount = 0
+    
+    const A2I = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I']
+    for (let i=0; i < A2I.length; i++ ){
+
+      for(let y=0; y < 9; y++){
+
+        if( A2I[i] == 'A'){
+          // column
+          putInColumn(y, puzzleString[stringCount])
+          
+        } else if( A2I[i] == 'B'){
+          // column
+          putInColumn(y, puzzleString[stringCount])
+
+        } else if( A2I[i] == 'C'){
+          // column
+          putInColumn(y, puzzleString[stringCount])
+
+        } else if( A2I[i] == 'D'){
+          // column
+          putInColumn(y, puzzleString[stringCount])
+
+        } else if( A2I[i] == 'E'){
+          // column
+          putInColumn(y, puzzleString[stringCount])
+
+        } else if( A2I[i] == 'F'){
+          // column
+          putInColumn(y, puzzleString[stringCount])
+
+        } else if( A2I[i] == 'G'){
+          // column
+          putInColumn(y, puzzleString[stringCount])
+
+        } else if( A2I[i] == 'H'){
+          // column
+          putInColumn(y, puzzleString[stringCount])
+
+        } else if( A2I[i] == 'I'){
+          // column
+          putInColumn(y, puzzleString[stringCount])
+        }
+
+        stringCount++
+
+      }
+
+    }
+
+
+
+    let invalidSudo = false
+
+    // columns
+    function checkInColumn(column, value){
+      return column.includes( value )
+    }
+
+    // column 1
+    if( column == 1){
+      if( checkInColumn(column1, value) == true){
+        invalidSudo = true;
+      }
+    }
+    // column 2
+    if( column == 2){
+      if( checkInColumn(column2, value) == true){
+        invalidSudo = true;
+      }
+    }
+    // column 3
+    if( column == 3){
+      if( checkInColumn(column3, value) == true){
+        invalidSudo = true;
+      }
+    }
+    // column 4
+    if( column == 4){
+      if( checkInColumn(column4, value) == true){
+        invalidSudo = true;
+      }
+    }
+    // column 5
+    if( column == 5){
+      if( checkInColumn(column5, value) == true){
+        invalidSudo = true;
+      }
+    }
+    // column 6
+    if( column == 6){
+      if( checkInColumn(column6, value) == true){
+        invalidSudo = true;
+      }
+    }
+    // column 7
+    if( column == 7){
+      if( checkInColumn(column7, value) == true){
+        invalidSudo = true;
+      }
+    }
+    // column 8
+    if( column == 8){
+      if( checkInColumn(column8, value) == true){
+        invalidSudo = true;
+      }
+    }
+    // column 9
+    if( column == 9){
+      if( checkInColumn(column9, value) == true){
+        invalidSudo = true;
+      }
+    }
+    
+    console.log('invalidSudo in column '+ invalidSudo)
+    return invalidSudo
   }
 
   checkRegionPlacement(puzzleString, row, column, values) {
@@ -231,7 +513,7 @@ class SudokuSolver {
       console.log('qube9th '+ qube9th[0]+' / '+qube9th[1]+' / '+qube9th[2])
       */
       console.log('invalidSudo '+ invalidSudo)
-      // return invalidSudo
+      return invalidSudo
   }
 
 
