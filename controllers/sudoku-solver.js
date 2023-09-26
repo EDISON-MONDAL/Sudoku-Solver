@@ -77,7 +77,7 @@ class SudokuSolver {
       
       if(match.length > 1){
         return true
-      } else if (match.length == 1 && row[column] != value){
+      } else if (match.length == 1 && row[column] != value){ 
         return true
       }
     }
@@ -823,14 +823,28 @@ class SudokuSolver {
   solve(puzzleString) {  
     let stringIndex = 0
 
+    let returnPuzzle = puzzleString
+
     const rowName = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I']
     for(let i=0; i < 1; i++){
       console.log('^^^^^^^^^^^^^ ' + puzzleString[stringIndex])
       console.log('vvvvvvvvv ' + rowName[i])
+      console.log('iiiiiiiiiiiii ' + i)
 
       if(puzzleString[stringIndex] != '.'){
-        const checkInRow = this.checkRowPlacement(puzzleString, 'A', 1, 9)
+        const checkInRow = this.checkRowPlacement(puzzleString, rowName[i], i+1, puzzleString[stringIndex])
+        const checkInCol = this.checkColPlacement(puzzleString, rowName[i], i+1, puzzleString[stringIndex])
+        const checkInRegion = this.checkRegionPlacement(puzzleString, rowName[i], i+1, puzzleString[stringIndex])
         console.log('---------------- ' + checkInRow)
+        console.log('>>>>>>>>>>>>>> ' + checkInCol)
+        console.log('```````````` ' + checkInRegion)
+
+        if(checkInRow == true || checkInCol == true || checkInRegion == true){
+          console.log('invalid puzzle')
+        }        
+      }
+      else {
+
       }
 
       stringIndex++
