@@ -58,19 +58,33 @@ class SudokuSolver {
     }
 
 
-
     let invalidSudo = false
 
     // rows
-    function checkInRow(row, column, value){
-      if(row[column] != value){
+    function checkInRow(row, column, value){ 
+      /*
+      if(row[column] != value){ console.log('jjjjjjjj '+ row+' col '+ row[column]+ ' val '+ value)
         return row.includes( value )
-      }            
+      }
+      */
+      const match = []
+      for(let i=0; i < row.length; i++){
+        if( row[i] == value){
+          match.push( value )
+        }
+      }  
+      console.log('match length '+ match.length)
+      
+      if(match.length > 1){
+        return true
+      } else if (match.length == 1 && row[column] != value){
+        return true
+      }
     }
 
     // row 1 - A
-    if( row == 'A'){
-      if( checkInRow(row1, columnIndexArr, value) == true){
+    if( row == 'A'){ 
+      if( checkInRow(row1, columnIndexArr, value) == true){ 
         invalidSudo = true;
       }
     }
@@ -138,17 +152,6 @@ class SudokuSolver {
 
   checkColPlacement(puzzleString, row, column, values) {
     let value = values.toString()
-    const columnIndexArr = column - 1
-
-    const row1 = []
-    const row2 = []
-    const row3 = []
-    const row4 = []
-    const row5 = []
-    const row6 = []
-    const row7 = []
-    const row8 = []
-    const row9 = []
 
     const column1 = []
     const column2 = []
@@ -194,56 +197,38 @@ class SudokuSolver {
       for(let y=0; y < 9; y++){
 
         if( A2I[i] == 'A'){
-          row1.push( puzzleString[stringCount] )
-
           // column
           putInColumn(y, puzzleString[stringCount])
           
         } else if( A2I[i] == 'B'){
-          row2.push( puzzleString[stringCount] )
-
           // column
           putInColumn(y, puzzleString[stringCount])
 
         } else if( A2I[i] == 'C'){
-          row3.push( puzzleString[stringCount] )
-
           // column
           putInColumn(y, puzzleString[stringCount])
 
         } else if( A2I[i] == 'D'){
-          row4.push( puzzleString[stringCount] )
-
           // column
           putInColumn(y, puzzleString[stringCount])
 
         } else if( A2I[i] == 'E'){
-          row5.push( puzzleString[stringCount] )
-
           // column
           putInColumn(y, puzzleString[stringCount])
 
         } else if( A2I[i] == 'F'){
-          row6.push( puzzleString[stringCount] )
-
           // column
           putInColumn(y, puzzleString[stringCount])
 
         } else if( A2I[i] == 'G'){
-          row7.push( puzzleString[stringCount] )
-
           // column
           putInColumn(y, puzzleString[stringCount])
 
         } else if( A2I[i] == 'H'){
-          row8.push( puzzleString[stringCount] )
-
           // column
           putInColumn(y, puzzleString[stringCount])
 
         } else if( A2I[i] == 'I'){
-          row9.push( puzzleString[stringCount] )
-
           // column
           putInColumn(y, puzzleString[stringCount])
         }
@@ -258,87 +243,101 @@ class SudokuSolver {
 
     let invalidSudo = false
 
+    console.log('column one '+ column1)
+
     // columns
-    function checkInColumn(row, index, column, value){ 
-      if(row[index] != value){
-        return column.includes( value )
+    function checkInColumn(row, column, value){ 
+      
+      const match = []
+      for(let i=0; i < column.length; i++){
+        if( column[i] == value){
+          match.push( value )
+        }
+      }  
+      console.log('match length column '+ match.length)
+      
+      if(match.length > 1){
+        return true
+      } else if (match.length == 1 && column[row] != value){
+        return true
       }
     }
 
-    let rowInp = []
+
+    let rowInp
 
     if(row == 'A'){
-      rowInp = row1
+      rowInp = 0
     } else if(row == 'B'){
-      rowInp = row2
+      rowInp = 1
     } else if(row == 'C'){
-      rowInp = row3
+      rowInp = 2
     } else if(row == 'D'){
-      rowInp = row4
+      rowInp = 3
     } else if(row == 'E'){
-      rowInp = row5
+      rowInp = 4
     } else if(row == 'F'){
-      rowInp = row6
+      rowInp = 5
     } else if(row == 'G'){
-      rowInp = row7
+      rowInp = 6
     } else if(row == 'H'){
-      rowInp = row8
+      rowInp = 7
     } else if(row == 'I'){
-      rowInp = row9
+      rowInp = 8
     }
 
 
     // column 1
     if( column == 1){
-      if( checkInColumn(rowInp, columnIndexArr, column1, value) == true){
+      if( checkInColumn(rowInp, column1, value) == true){
         invalidSudo = true;
       }
     }
     // column 2
     if( column == 2){
-      if( checkInColumn(rowInp, columnIndexArr, column2, value) == true){
+      if( checkInColumn(rowInp, column2, value) == true){
         invalidSudo = true;
       }
     }
     // column 3
     if( column == 3){
-      if( checkInColumn(rowInp, columnIndexArr, column3, value) == true){
+      if( checkInColumn(rowInp, column3, value) == true){
         invalidSudo = true;
       }
     }
     // column 4
     if( column == 4){
-      if( checkInColumn(rowInp, columnIndexArr, column4, value) == true){
+      if( checkInColumn(rowInp, column4, value) == true){
         invalidSudo = true;
       }
     }
     // column 5
     if( column == 5){
-      if( checkInColumn(rowInp, columnIndexArr, column5, value) == true){
+      if( checkInColumn(rowInp, column5, value) == true){
         invalidSudo = true;
       }
     }
     // column 6
     if( column == 6){
-      if( checkInColumn(rowInp, columnIndexArr, column6, value) == true){
+      if( checkInColumn(rowInp, column6, value) == true){
         invalidSudo = true;
       }
     }
     // column 7
     if( column == 7){
-      if( checkInColumn(rowInp, columnIndexArr, column7, value) == true){
+      if( checkInColumn(rowInp, column7, value) == true){
         invalidSudo = true;
       }
     }
     // column 8
     if( column == 8){
-      if( checkInColumn(rowInp, columnIndexArr, column8, value) == true){
+      if( checkInColumn(rowInp, column8, value) == true){
         invalidSudo = true;
       }
     }
     // column 9
     if( column == 9){
-      if( checkInColumn(rowInp, columnIndexArr, column9, value) == true){
+      if( checkInColumn(rowInp, column9, value) == true){
         invalidSudo = true;
       }
     }
@@ -347,67 +346,23 @@ class SudokuSolver {
     return invalidSudo
   }
 
+
+
   checkRegionPlacement(puzzleString, row, column, values) {
     let value = values.toString()
-    const columnIndexArr = column - 1
 
-    const row1 = []
-    const row2 = []
-    const row3 = []
-    const row4 = []
-    const row5 = []
-    const row6 = []
-    const row7 = []
-    const row8 = []
-    const row9 = []
+    
+    const qube1st = []
+    const qube2nd = []
+    const qube3rd = []
 
-    const qube1st = [
-      [],
-      [],
-      []
-    ]
-    const qube2nd = [
-      [],
-      [],
-      []
-    ]
-    const qube3rd = [
-      [],
-      [],
-      []
-    ]
+    const qube4th = []
+    const qube5th = []
+    const qube6th = []
 
-    const qube4th = [
-      [],
-      [],
-      []
-    ]
-    const qube5th = [
-      [],
-      [],
-      []
-    ]
-    const qube6th = [
-      [],
-      [],
-      []
-    ]
-
-    const qube7th = [
-      [],
-      [],
-      []
-    ]
-    const qube8th = [
-      [],
-      [],
-      []
-    ]
-    const qube9th = [
-      [],
-      [],
-      []
-    ]
+    const qube7th = []
+    const qube8th = []
+    const qube9th = []
 
     let stringCount = 0
     
@@ -417,94 +372,76 @@ class SudokuSolver {
       for(let y=0; y < 9; y++){
 
         if( A2I[i] == 'A'){
-          row1.push( puzzleString[stringCount] )
-
           // qube 1 - row 1
-          if( y==0 || y==1 || y==2 ){ qube1st[0].push( puzzleString[stringCount] ) }
+          if( y==0 || y==1 || y==2 ){ qube1st.push( puzzleString[stringCount] ) }
           // qube 2 - row 1
-          if( y==3 || y==4 || y==5 ){ qube2nd[0].push( puzzleString[stringCount] ) }
+          if( y==3 || y==4 || y==5 ){ qube2nd.push( puzzleString[stringCount] ) }
           // qube 3 - row 1
-          if( y==6 || y==7 || y==8 ){ qube3rd[0].push( puzzleString[stringCount] ) }
+          if( y==6 || y==7 || y==8 ){ qube3rd.push( puzzleString[stringCount] ) }
           
         } else if( A2I[i] == 'B'){
-          row2.push( puzzleString[stringCount] )
-
           // qube 1 - row 2
-          if( y==0 || y==1 || y==2 ){ qube1st[1].push( puzzleString[stringCount] ) }
+          if( y==0 || y==1 || y==2 ){ qube1st.push( puzzleString[stringCount] ) }
           // qube 2 - row 2
-          if( y==3 || y==4 || y==5 ){ qube2nd[1].push( puzzleString[stringCount] ) }
+          if( y==3 || y==4 || y==5 ){ qube2nd.push( puzzleString[stringCount] ) }
           // qube 3 - row 2
-          if( y==6 || y==7 || y==8 ){ qube3rd[1].push( puzzleString[stringCount] ) }
+          if( y==6 || y==7 || y==8 ){ qube3rd.push( puzzleString[stringCount] ) }
 
         } else if( A2I[i] == 'C'){
-          row3.push( puzzleString[stringCount] )
-
           // qube 1 - row 3
-          if( y==0 || y==1 || y==2 ){ qube1st[2].push( puzzleString[stringCount] ) }
+          if( y==0 || y==1 || y==2 ){ qube1st.push( puzzleString[stringCount] ) }
           // qube 2 - row 3
-          if( y==3 || y==4 || y==5 ){ qube2nd[2].push( puzzleString[stringCount] ) }
+          if( y==3 || y==4 || y==5 ){ qube2nd.push( puzzleString[stringCount] ) }
           // qube 3 - row 3
-          if( y==6 || y==7 || y==8 ){ qube3rd[2].push( puzzleString[stringCount] ) }
+          if( y==6 || y==7 || y==8 ){ qube3rd.push( puzzleString[stringCount] ) }
 
         } else if( A2I[i] == 'D'){
-          row4.push( puzzleString[stringCount] )
-
           // qube 4 - row 1
-          if( y==0 || y==1 || y==2 ){ qube4th[0].push( puzzleString[stringCount] ) }
+          if( y==0 || y==1 || y==2 ){ qube4th.push( puzzleString[stringCount] ) }
           // qube 5 - row 1
-          if( y==3 || y==4 || y==5 ){ qube5th[0].push( puzzleString[stringCount] ) }
+          if( y==3 || y==4 || y==5 ){ qube5th.push( puzzleString[stringCount] ) }
           // qube 6 - row 1
-          if( y==6 || y==7 || y==8 ){ qube6th[0].push( puzzleString[stringCount] ) }
+          if( y==6 || y==7 || y==8 ){ qube6th.push( puzzleString[stringCount] ) }
 
         } else if( A2I[i] == 'E'){
-          row5.push( puzzleString[stringCount] )
-
           // qube 4 - row 2
-          if( y==0 || y==1 || y==2 ){ qube4th[1].push( puzzleString[stringCount] ) }
+          if( y==0 || y==1 || y==2 ){ qube4th.push( puzzleString[stringCount] ) }
           // qube 5 - row 2
-          if( y==3 || y==4 || y==5 ){ qube5th[1].push( puzzleString[stringCount] ) }
+          if( y==3 || y==4 || y==5 ){ qube5th.push( puzzleString[stringCount] ) }
           // qube 6 - row 2
-          if( y==6 || y==7 || y==8 ){ qube6th[1].push( puzzleString[stringCount] ) }
+          if( y==6 || y==7 || y==8 ){ qube6th.push( puzzleString[stringCount] ) }
 
         } else if( A2I[i] == 'F'){
-          row6.push( puzzleString[stringCount] )
-
           // qube 4 - row 3
-          if( y==0 || y==1 || y==2 ){ qube4th[2].push( puzzleString[stringCount] ) }
+          if( y==0 || y==1 || y==2 ){ qube4th.push( puzzleString[stringCount] ) }
           // qube 5 - row 3
-          if( y==3 || y==4 || y==5 ){ qube5th[2].push( puzzleString[stringCount] ) }
+          if( y==3 || y==4 || y==5 ){ qube5th.push( puzzleString[stringCount] ) }
           // qube 6 - row 3
-          if( y==6 || y==7 || y==8 ){ qube6th[2].push( puzzleString[stringCount] ) }
+          if( y==6 || y==7 || y==8 ){ qube6th.push( puzzleString[stringCount] ) }
 
         } else if( A2I[i] == 'G'){
-          row7.push( puzzleString[stringCount] )
-
           // qube 7 - row 1
-          if( y==0 || y==1 || y==2 ){ qube7th[0].push( puzzleString[stringCount] ) }
+          if( y==0 || y==1 || y==2 ){ qube7th.push( puzzleString[stringCount] ) }
           // qube 8 - row 1
-          if( y==3 || y==4 || y==5 ){ qube8th[0].push( puzzleString[stringCount] ) }
+          if( y==3 || y==4 || y==5 ){ qube8th.push( puzzleString[stringCount] ) }
           // qube 9 - row 1
-          if( y==6 || y==7 || y==8 ){ qube9th[0].push( puzzleString[stringCount] ) }
+          if( y==6 || y==7 || y==8 ){ qube9th.push( puzzleString[stringCount] ) }
 
         } else if( A2I[i] == 'H'){
-          row8.push( puzzleString[stringCount] )
-
           // qube 7 - row 2
-          if( y==0 || y==1 || y==2 ){ qube7th[1].push( puzzleString[stringCount] ) }
+          if( y==0 || y==1 || y==2 ){ qube7th.push( puzzleString[stringCount] ) }
           // qube 8 - row 2
-          if( y==3 || y==4 || y==5 ){ qube8th[1].push( puzzleString[stringCount] ) }
+          if( y==3 || y==4 || y==5 ){ qube8th.push( puzzleString[stringCount] ) }
           // qube 9 - row 2
-          if( y==6 || y==7 || y==8 ){ qube9th[1].push( puzzleString[stringCount] ) }
+          if( y==6 || y==7 || y==8 ){ qube9th.push( puzzleString[stringCount] ) }
 
         } else if( A2I[i] == 'I'){
-          row9.push( puzzleString[stringCount] )
-
           // qube 7 - row 3
-          if( y==0 || y==1 || y==2 ){ qube7th[2].push( puzzleString[stringCount] ) }
+          if( y==0 || y==1 || y==2 ){ qube7th.push( puzzleString[stringCount] ) }
           // qube 8 - row 3
-          if( y==3 || y==4 || y==5 ){ qube8th[2].push( puzzleString[stringCount] ) }
+          if( y==3 || y==4 || y==5 ){ qube8th.push( puzzleString[stringCount] ) }
           // qube 9 - row 3
-          if( y==6 || y==7 || y==8 ){ qube9th[2].push( puzzleString[stringCount] ) }
+          if( y==6 || y==7 || y==8 ){ qube9th.push( puzzleString[stringCount] ) }
         }
 
         stringCount++
@@ -513,116 +450,393 @@ class SudokuSolver {
 
     }
 
-
-    let rowInp = []
-
-    if(row == 'A'){
-      rowInp = row1
-    } else if(row == 'B'){
-      rowInp = row2
-    } else if(row == 'C'){
-      rowInp = row3
-    } else if(row == 'D'){
-      rowInp = row4
-    } else if(row == 'E'){
-      rowInp = row5
-    } else if(row == 'F'){
-      rowInp = row6
-    } else if(row == 'G'){
-      rowInp = row7
-    } else if(row == 'H'){
-      rowInp = row8
-    } else if(row == 'I'){
-      rowInp = row9
-    }
-
-
+    
     let invalidSudo = false
 
+    
     // check validation
       // qube1
-      if( (row == 'A' || row == 'B' || row == 'C') && ( column == 1 || column == 2 || column == 3) && rowInp[columnIndexArr] != value ){ 
-        if( qube1st[0].includes( value ) == true ){ invalidSudo = true }
-        if( qube1st[1].includes( value ) == true ){ invalidSudo = true }           
-        if( qube1st[2].includes( value ) == true ){ invalidSudo = true }        
+      if( (row == 'A' || row == 'B' || row == 'C') && ( column == 1 || column == 2 || column == 3) ){ 
         
+        let index = 0
+        if( row == 'A' && column == 1 ){
+          index = 0
+        } else if( row == 'A' && column == 2 ){
+          index = 1
+        } else if( row == 'A' && column == 3 ){
+          index = 2
+        } else if( row == 'B' && column == 1 ){
+          index = 3
+        } else if( row == 'B' && column == 2 ){
+          index = 4
+        } else if( row == 'B' && column == 3 ){
+          index = 5
+        } else if( row == 'C' && column == 1 ){
+          index = 6
+        } else if( row == 'C' && column == 2 ){
+          index = 7
+        } else if( row == 'C' && column == 3 ){
+          index = 8
+        }
+
+
+        const match = []
+        for(let i=0; i < qube1st.length; i++){
+          if( qube1st[i] == value){
+            match.push( value )
+          }
+        }  
+        console.log('match length qube1st '+ match.length)
+        
+        if(match.length > 1){
+          return true
+        } else if (match.length == 1 && qube1st[index] != value){
+          return true
+        }
       }
 
       // qube2
-      if( (row == 'A' || row == 'B' || row == 'C') && ( column == 4 || column == 5 || column == 6) && rowInp[columnIndexArr] != value ){
-        if( qube2nd[0].includes( value ) == true ){ invalidSudo = true }
-        if( qube2nd[1].includes( value ) == true ){ invalidSudo = true }           
-        if( qube2nd[2].includes( value ) == true ){ invalidSudo = true } 
+      if( (row == 'A' || row == 'B' || row == 'C') && ( column == 4 || column == 5 || column == 6) ){
+       
+        let index = 0
+        if( row == 'A' && column == 4 ){
+          index = 0
+        } else if( row == 'A' && column == 5 ){
+          index = 1
+        } else if( row == 'A' && column == 6 ){
+          index = 2
+        } else if( row == 'B' && column == 4 ){
+          index = 3
+        } else if( row == 'B' && column == 5 ){
+          index = 4
+        } else if( row == 'B' && column == 6 ){
+          index = 5
+        } else if( row == 'C' && column == 4 ){
+          index = 6
+        } else if( row == 'C' && column == 5 ){
+          index = 7
+        } else if( row == 'C' && column == 6 ){
+          index = 8
+        }
+
+
+        const match = []
+        for(let i=0; i < qube2nd.length; i++){
+          if( qube2nd[i] == value){
+            match.push( value )
+          }
+        }  
+        console.log('match length qube2nd '+ match.length)
+        
+        if(match.length > 1){
+          return true
+        } else if (match.length == 1 && qube2nd[index] != value){
+          return true
+        }
       }
 
       // qube3
-      if( (row == 'A' || row == 'B' || row == 'C') && ( column == 7 || column == 8 || column == 9) && rowInp[columnIndexArr] != value ){
-        if( qube3rd[0].includes( value ) == true ){ invalidSudo = true }
-        if( qube3rd[1].includes( value ) == true ){ invalidSudo = true }           
-        if( qube3rd[2].includes( value ) == true ){ invalidSudo = true } 
+      if( (row == 'A' || row == 'B' || row == 'C') && ( column == 7 || column == 8 || column == 9) ){
+        let index = 0
+        if( row == 'A' && column == 7 ){
+          index = 0
+        } else if( row == 'A' && column == 8 ){
+          index = 1
+        } else if( row == 'A' && column == 9 ){
+          index = 2
+        } else if( row == 'B' && column == 7 ){
+          index = 3
+        } else if( row == 'B' && column == 8 ){
+          index = 4
+        } else if( row == 'B' && column == 9 ){
+          index = 5
+        } else if( row == 'C' && column == 7 ){
+          index = 6
+        } else if( row == 'C' && column == 8 ){
+          index = 7
+        } else if( row == 'C' && column == 9 ){
+          index = 8
+        }
+
+
+        const match = []
+        for(let i=0; i < qube3rd.length; i++){
+          if( qube3rd[i] == value){
+            match.push( value )
+          }
+        }  
+        console.log('match length qube3rd '+ match.length)
+        
+        if(match.length > 1){
+          return true
+        } else if (match.length == 1 && qube3rd[index] != value){
+          return true
+        }
       }
 
       // qube4
-      if( (row == 'D' || row == 'E' || row == 'F') && ( column == 1 || column == 2 || column == 3) && rowInp[columnIndexArr] != value ){
-        if( qube4th[0].includes( value ) == true ){ invalidSudo = true }
-        if( qube4th[1].includes( value ) == true ){ invalidSudo = true }           
-        if( qube4th[2].includes( value ) == true ){ invalidSudo = true } 
+      if( (row == 'D' || row == 'E' || row == 'F') && ( column == 1 || column == 2 || column == 3) ){
+        
+        let index = 0
+        if( row == 'D' && column == 1 ){
+          index = 0
+        } else if( row == 'D' && column == 2 ){
+          index = 1
+        } else if( row == 'D' && column == 3 ){
+          index = 2
+        } else if( row == 'E' && column == 1 ){
+          index = 3
+        } else if( row == 'E' && column == 2 ){
+          index = 4
+        } else if( row == 'E' && column == 3 ){
+          index = 5
+        } else if( row == 'F' && column == 1 ){
+          index = 6
+        } else if( row == 'F' && column == 2 ){
+          index = 7
+        } else if( row == 'F' && column == 3 ){
+          index = 8
+        }
+
+
+        const match = []
+        for(let i=0; i < qube4th.length; i++){
+          if( qube4th[i] == value){
+            match.push( value )
+          }
+        }  
+        console.log('match length qube4th '+ match.length)
+        
+        if(match.length > 1){
+          return true
+        } else if (match.length == 1 && qube4th[index] != value){
+          return true
+        }
       }
 
       // qube5
-      if( (row == 'D' || row == 'E' || row == 'F') && ( column == 4 || column == 5 || column == 6) && rowInp[columnIndexArr] != value ){
-        if( qube5th[0].includes( value ) == true ){ invalidSudo = true }
-        if( qube5th[1].includes( value ) == true ){ invalidSudo = true }           
-        if( qube5th[2].includes( value ) == true ){ invalidSudo = true } 
+      if( (row == 'D' || row == 'E' || row == 'F') && ( column == 4 || column == 5 || column == 6) ){
+        
+        let index = 0
+        if( row == 'D' && column == 4 ){
+          index = 0
+        } else if( row == 'D' && column == 5 ){
+          index = 1
+        } else if( row == 'D' && column == 6 ){
+          index = 2
+        } else if( row == 'E' && column == 4 ){
+          index = 3
+        } else if( row == 'E' && column == 5 ){
+          index = 4
+        } else if( row == 'E' && column == 6 ){
+          index = 5
+        } else if( row == 'F' && column == 4 ){
+          index = 6
+        } else if( row == 'F' && column == 5 ){
+          index = 7
+        } else if( row == 'F' && column == 6 ){
+          index = 8
+        }
+
+
+        const match = []
+        for(let i=0; i < qube5th.length; i++){
+          if( qube5th[i] == value){
+            match.push( value )
+          }
+        }  
+        console.log('match length qube5th '+ match.length)
+        
+        if(match.length > 1){
+          return true
+        } else if (match.length == 1 && qube5th[index] != value){
+          return true
+        }
       }
 
       // qube6
-      if( (row == 'D' || row == 'E' || row == 'F') && ( column == 7 || column == 8 || column == 9) && rowInp[columnIndexArr] != value ){
-        if( qube6th[0].includes( value ) == true ){ invalidSudo = true }
-        if( qube6th[1].includes( value ) == true ){ invalidSudo = true }           
-        if( qube6th[2].includes( value ) == true ){ invalidSudo = true } 
+      if( (row == 'D' || row == 'E' || row == 'F') && ( column == 7 || column == 8 || column == 9) ){
+                 
+        let index = 0
+        if( row == 'D' && column == 7 ){
+          index = 0
+        } else if( row == 'D' && column == 8 ){
+          index = 1
+        } else if( row == 'D' && column == 9 ){
+          index = 2
+        } else if( row == 'E' && column == 7 ){
+          index = 3
+        } else if( row == 'E' && column == 8 ){
+          index = 4
+        } else if( row == 'E' && column == 9 ){
+          index = 5
+        } else if( row == 'F' && column == 7 ){
+          index = 6
+        } else if( row == 'F' && column == 8 ){
+          index = 7
+        } else if( row == 'F' && column == 9 ){
+          index = 8
+        }
+
+
+        const match = []
+        for(let i=0; i < qube6th.length; i++){
+          if( qube6th[i] == value){
+            match.push( value )
+          }
+        }  
+        console.log('match length qube6th '+ match.length)
+        
+        if(match.length > 1){
+          return true
+        } else if (match.length == 1 && qube6th[index] != value){
+          return true
+        }
       }
 
       // qube7
-      if( (row == 'G' || row == 'H' || row == 'I') && ( column == 1 || column == 2 || column == 3) && rowInp[columnIndexArr] != value ){
-        if( qube7th[0].includes( value ) == true ){ invalidSudo = true }
-        if( qube7th[1].includes( value ) == true ){ invalidSudo = true }           
-        if( qube7th[2].includes( value ) == true ){ invalidSudo = true } 
+      if( (row == 'G' || row == 'H' || row == 'I') && ( column == 1 || column == 2 || column == 3) ){
+                          
+        let index = 0
+        if( row == 'G' && column == 1 ){
+          index = 0
+        } else if( row == 'G' && column == 2 ){
+          index = 1
+        } else if( row == 'G' && column == 3 ){
+          index = 2
+        } else if( row == 'H' && column == 1 ){
+          index = 3
+        } else if( row == 'H' && column == 2 ){
+          index = 4
+        } else if( row == 'H' && column == 3 ){
+          index = 5
+        } else if( row == 'I' && column == 1 ){
+          index = 6
+        } else if( row == 'I' && column == 2 ){
+          index = 7
+        } else if( row == 'I' && column == 3 ){
+          index = 8
+        }
+
+
+        const match = []
+        for(let i=0; i < qube7th.length; i++){
+          if( qube7th[i] == value){
+            match.push( value )
+          }
+        }  
+        console.log('match length qube7th '+ match.length)
+        
+        if(match.length > 1){
+          return true
+        } else if (match.length == 1 && qube7th[index] != value){
+          return true
+        }
       }
 
       // qube8
-      if( (row == 'G' || row == 'H' || row == 'I') && ( column == 4 || column == 5 || column == 6) && rowInp[columnIndexArr] != value ){
-        if( qube8th[0].includes( value ) == true ){ invalidSudo = true }
-        if( qube8th[1].includes( value ) == true ){ invalidSudo = true }           
-        if( qube8th[2].includes( value ) == true ){ invalidSudo = true } 
+      if( (row == 'G' || row == 'H' || row == 'I') && ( column == 4 || column == 5 || column == 6) ){
+        
+        let index = 0
+        if( row == 'G' && column == 4 ){
+          index = 0
+        } else if( row == 'G' && column == 5 ){
+          index = 1
+        } else if( row == 'G' && column == 6 ){
+          index = 2
+        } else if( row == 'H' && column == 4 ){
+          index = 3
+        } else if( row == 'H' && column == 5 ){
+          index = 4
+        } else if( row == 'H' && column == 6 ){
+          index = 5
+        } else if( row == 'I' && column == 4 ){
+          index = 6
+        } else if( row == 'I' && column == 5 ){
+          index = 7
+        } else if( row == 'I' && column == 6 ){
+          index = 8
+        }
+
+
+        const match = []
+        for(let i=0; i < qube8th.length; i++){
+          if( qube8th[i] == value){
+            match.push( value )
+          }
+        }  
+        console.log('match length qube8th '+ match.length)
+        
+        if(match.length > 1){
+          return true
+        } else if (match.length == 1 && qube8th[index] != value){
+          return true
+        }
       }
 
       // qube9
-      if( (row == 'G' || row == 'H' || row == 'I') && ( column == 7 || column == 8 || column == 9) && rowInp[columnIndexArr] != value ){
-        if( qube9th[0].includes( value ) == true ){ invalidSudo = true }
-        if( qube9th[1].includes( value ) == true ){ invalidSudo = true }           
-        if( qube9th[2].includes( value ) == true ){ invalidSudo = true } 
+      if( (row == 'G' || row == 'H' || row == 'I') && ( column == 7 || column == 8 || column == 9) ){
+        
+        let index = 0
+        if( row == 'G' && column == 7 ){
+          index = 0
+        } else if( row == 'G' && column == 8 ){
+          index = 1
+        } else if( row == 'G' && column == 9 ){
+          index = 2
+        } else if( row == 'H' && column == 7 ){
+          index = 3
+        } else if( row == 'H' && column == 8 ){
+          index = 4
+        } else if( row == 'H' && column == 9 ){
+          index = 5
+        } else if( row == 'I' && column == 7 ){
+          index = 6
+        } else if( row == 'I' && column == 8 ){
+          index = 7
+        } else if( row == 'I' && column == 9 ){
+          index = 8
+        }
+
+
+        const match = []
+        for(let i=0; i < qube9th.length; i++){
+          if( qube9th[i] == value){
+            match.push( value )
+          }
+        }  
+        console.log('match length qube9th '+ match.length)
+        
+        if(match.length > 1){
+          return true
+        } else if (match.length == 1 && qube9th[index] != value){
+          return true
+        }
       }
 
-      /*
-      console.log('qube1st '+ qube1st[0]+' / '+qube1st[1]+' / '+qube1st[2])
-      console.log('qube2nd '+ qube2nd[0]+' / '+qube2nd[1]+' / '+qube2nd[2])
-      console.log('qube3rd '+ qube3rd[0]+' / '+qube3rd[1]+' / '+qube3rd[2])
-
-      console.log('qube4th '+ qube4th[0]+' / '+qube4th[1]+' / '+qube4th[2])
-      console.log('qube5th '+ qube5th[0]+' / '+qube5th[1]+' / '+qube5th[2])
-      console.log('qube6th '+ qube6th[0]+' / '+qube6th[1]+' / '+qube6th[2])
-
-      console.log('qube7th '+ qube7th[0]+' / '+qube7th[1]+' / '+qube7th[2])
-      console.log('qube8th '+ qube8th[0]+' / '+qube8th[1]+' / '+qube8th[2])
-      console.log('qube9th '+ qube9th[0]+' / '+qube9th[1]+' / '+qube9th[2])
-      */
+      
       console.log('invalidSudo region '+ invalidSudo)
       return invalidSudo
   }
 
 
-  solve(puzzleString) {
+  solve(puzzleString) {  
+    let stringIndex = 0
+
+    const rowName = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I']
+    for(let i=0; i < 1; i++){
+      console.log('^^^^^^^^^^^^^ ' + puzzleString[stringIndex])
+      console.log('vvvvvvvvv ' + rowName[i])
+
+      if(puzzleString[stringIndex] != '.'){
+        const checkInRow = this.checkRowPlacement(puzzleString, 'A', 1, 9)
+        console.log('---------------- ' + checkInRow)
+      }
+
+      stringIndex++
+      
+    }
+    /*
     const row1 = []
     const row2 = []
     const row3 = []
@@ -1090,7 +1304,7 @@ class SudokuSolver {
       if( checkInColumn(column9) == true){
         invalidSudo = true;
       }
-      
+      */
     
       
     
@@ -1134,7 +1348,7 @@ class SudokuSolver {
     */
 
     
-    return invalidSudo
+    // return invalidSudo
     // 769235418851496372432178956174569283395842761628713549283657194516924837947381625
     
   }
