@@ -50,7 +50,7 @@ module.exports = function (app) {
       const regionReplacement = solver.checkRegionPlacement( puzzle, row, column, value )
       const rowReplacement = solver.checkRowPlacement( puzzle, row, column, value )
       const colReplacement = solver.checkColPlacement( puzzle, row, column, value )
-
+      
       if(regionReplacement == true || rowReplacement == true || colReplacement == true){
         const err = []
         if( regionReplacement == true ){
@@ -67,6 +67,7 @@ module.exports = function (app) {
       } else {
         res.json({ valid: true})
       }
+      
     });
 
     

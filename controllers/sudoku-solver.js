@@ -62,75 +62,75 @@ class SudokuSolver {
     let invalidSudo = false
 
     // rows
-    function checkInRow(row, value){
-      return row.includes( value )      
+    function checkInRow(row, column, value){
+      if(row[column] != value){
+        return row.includes( value )
+      }            
     }
 
     // row 1 - A
     if( row == 'A'){
-      if( checkInRow(row1, value) == true){
+      if( checkInRow(row1, columnIndexArr, value) == true){
         invalidSudo = true;
       }
-
-      // coordinate
-      console.log('--------- '+ row1[columnIndexArr])
     }
-
+    
     // row 2 - B
     if( row == 'B'){
-      if( checkInRow(row2, value) == true){
+      if( checkInRow(row2, columnIndexArr, value) == true){
         invalidSudo = true;
       }
     }
 
     // row 3 - C
     if( row == 'C'){
-      if( checkInRow(row3, value) == true){
+      if( checkInRow(row3, columnIndexArr, value) == true){
         invalidSudo = true;
       }
     }
 
     // row 4 - D
     if( row == 'D'){
-      if( checkInRow(row4, value) == true){
+      if( checkInRow(row4, columnIndexArr, value) == true){
         invalidSudo = true;
       }
     }
 
     // row 5 - E
     if( row == 'E'){
-      if( checkInRow(row5, value) == true){
+      if( checkInRow(row5, columnIndexArr, value) == true){
         invalidSudo = true;
       }
     }
 
     // row 6 - F
     if( row == 'F'){
-      if( checkInRow(row6, value) == true){
+      if( checkInRow(row6, columnIndexArr, value) == true){
         invalidSudo = true;
       }
     }
 
     // row 7 - G
     if( row == 'G'){
-      if( checkInRow(row7, value) == true){
+      if( checkInRow(row7, columnIndexArr, value) == true){
         invalidSudo = true;
       }
     }
 
     // row 8 - H
     if( row == 'H'){
-      if( checkInRow(row8, value) == true){
+      if( checkInRow(row8, columnIndexArr, value) == true){
         invalidSudo = true;
       }
     }
 
     // row 9 - I
     if( row == 'I'){
-      if( checkInRow(row9, value) == true){
+      if( checkInRow(row9, columnIndexArr, value) == true){
         invalidSudo = true;
       }
     }
+    
 
     console.log('invalidSudo in row '+ invalidSudo)
     return invalidSudo
@@ -138,6 +138,17 @@ class SudokuSolver {
 
   checkColPlacement(puzzleString, row, column, values) {
     let value = values.toString()
+    const columnIndexArr = column - 1
+
+    const row1 = []
+    const row2 = []
+    const row3 = []
+    const row4 = []
+    const row5 = []
+    const row6 = []
+    const row7 = []
+    const row8 = []
+    const row9 = []
 
     const column1 = []
     const column2 = []
@@ -183,38 +194,56 @@ class SudokuSolver {
       for(let y=0; y < 9; y++){
 
         if( A2I[i] == 'A'){
+          row1.push( puzzleString[stringCount] )
+
           // column
           putInColumn(y, puzzleString[stringCount])
           
         } else if( A2I[i] == 'B'){
+          row2.push( puzzleString[stringCount] )
+
           // column
           putInColumn(y, puzzleString[stringCount])
 
         } else if( A2I[i] == 'C'){
+          row3.push( puzzleString[stringCount] )
+
           // column
           putInColumn(y, puzzleString[stringCount])
 
         } else if( A2I[i] == 'D'){
+          row4.push( puzzleString[stringCount] )
+
           // column
           putInColumn(y, puzzleString[stringCount])
 
         } else if( A2I[i] == 'E'){
+          row5.push( puzzleString[stringCount] )
+
           // column
           putInColumn(y, puzzleString[stringCount])
 
         } else if( A2I[i] == 'F'){
+          row6.push( puzzleString[stringCount] )
+
           // column
           putInColumn(y, puzzleString[stringCount])
 
         } else if( A2I[i] == 'G'){
+          row7.push( puzzleString[stringCount] )
+
           // column
           putInColumn(y, puzzleString[stringCount])
 
         } else if( A2I[i] == 'H'){
+          row8.push( puzzleString[stringCount] )
+
           // column
           putInColumn(y, puzzleString[stringCount])
 
         } else if( A2I[i] == 'I'){
+          row9.push( puzzleString[stringCount] )
+
           // column
           putInColumn(y, puzzleString[stringCount])
         }
@@ -230,61 +259,86 @@ class SudokuSolver {
     let invalidSudo = false
 
     // columns
-    function checkInColumn(column, value){
-      return column.includes( value )
+    function checkInColumn(row, index, column, value){ 
+      if(row[index] != value){
+        return column.includes( value )
+      }
     }
+
+    let rowInp = []
+
+    if(row == 'A'){
+      rowInp = row1
+    } else if(row == 'B'){
+      rowInp = row2
+    } else if(row == 'C'){
+      rowInp = row3
+    } else if(row == 'D'){
+      rowInp = row4
+    } else if(row == 'E'){
+      rowInp = row5
+    } else if(row == 'F'){
+      rowInp = row6
+    } else if(row == 'G'){
+      rowInp = row7
+    } else if(row == 'H'){
+      rowInp = row8
+    } else if(row == 'I'){
+      rowInp = row9
+    }
+
 
     // column 1
     if( column == 1){
-      if( checkInColumn(column1, value) == true){
+      if( checkInColumn(rowInp, columnIndexArr, column1, value) == true){
         invalidSudo = true;
       }
     }
     // column 2
     if( column == 2){
-      if( checkInColumn(column2, value) == true){
+      if( checkInColumn(rowInp, columnIndexArr, column2, value) == true){
         invalidSudo = true;
       }
     }
     // column 3
     if( column == 3){
-      if( checkInColumn(column3, value) == true){
+      if( checkInColumn(rowInp, columnIndexArr, column3, value) == true){
         invalidSudo = true;
       }
     }
     // column 4
     if( column == 4){
-      if( checkInColumn(column4, value) == true){
+      if( checkInColumn(rowInp, columnIndexArr, column4, value) == true){
         invalidSudo = true;
       }
     }
     // column 5
     if( column == 5){
-      if( checkInColumn(column5, value) == true){
+      if( checkInColumn(rowInp, columnIndexArr, column5, value) == true){
         invalidSudo = true;
       }
     }
     // column 6
     if( column == 6){
-      if( checkInColumn(column6, value) == true){
+      if( checkInColumn(rowInp, columnIndexArr, column6, value) == true){
         invalidSudo = true;
       }
     }
     // column 7
     if( column == 7){
-      if( checkInColumn(column7, value) == true){
+      if( checkInColumn(rowInp, columnIndexArr, column7, value) == true){
         invalidSudo = true;
       }
     }
     // column 8
     if( column == 8){
-      if( checkInColumn(column8, value) == true){
+      if( checkInColumn(rowInp, columnIndexArr, column8, value) == true){
         invalidSudo = true;
       }
     }
     // column 9
     if( column == 9){
-      if( checkInColumn(column9, value) == true){
+      if( checkInColumn(rowInp, columnIndexArr, column9, value) == true){
         invalidSudo = true;
       }
     }
@@ -295,6 +349,17 @@ class SudokuSolver {
 
   checkRegionPlacement(puzzleString, row, column, values) {
     let value = values.toString()
+    const columnIndexArr = column - 1
+
+    const row1 = []
+    const row2 = []
+    const row3 = []
+    const row4 = []
+    const row5 = []
+    const row6 = []
+    const row7 = []
+    const row8 = []
+    const row9 = []
 
     const qube1st = [
       [],
@@ -352,6 +417,8 @@ class SudokuSolver {
       for(let y=0; y < 9; y++){
 
         if( A2I[i] == 'A'){
+          row1.push( puzzleString[stringCount] )
+
           // qube 1 - row 1
           if( y==0 || y==1 || y==2 ){ qube1st[0].push( puzzleString[stringCount] ) }
           // qube 2 - row 1
@@ -360,6 +427,8 @@ class SudokuSolver {
           if( y==6 || y==7 || y==8 ){ qube3rd[0].push( puzzleString[stringCount] ) }
           
         } else if( A2I[i] == 'B'){
+          row2.push( puzzleString[stringCount] )
+
           // qube 1 - row 2
           if( y==0 || y==1 || y==2 ){ qube1st[1].push( puzzleString[stringCount] ) }
           // qube 2 - row 2
@@ -368,6 +437,8 @@ class SudokuSolver {
           if( y==6 || y==7 || y==8 ){ qube3rd[1].push( puzzleString[stringCount] ) }
 
         } else if( A2I[i] == 'C'){
+          row3.push( puzzleString[stringCount] )
+
           // qube 1 - row 3
           if( y==0 || y==1 || y==2 ){ qube1st[2].push( puzzleString[stringCount] ) }
           // qube 2 - row 3
@@ -376,6 +447,8 @@ class SudokuSolver {
           if( y==6 || y==7 || y==8 ){ qube3rd[2].push( puzzleString[stringCount] ) }
 
         } else if( A2I[i] == 'D'){
+          row4.push( puzzleString[stringCount] )
+
           // qube 4 - row 1
           if( y==0 || y==1 || y==2 ){ qube4th[0].push( puzzleString[stringCount] ) }
           // qube 5 - row 1
@@ -384,6 +457,8 @@ class SudokuSolver {
           if( y==6 || y==7 || y==8 ){ qube6th[0].push( puzzleString[stringCount] ) }
 
         } else if( A2I[i] == 'E'){
+          row5.push( puzzleString[stringCount] )
+
           // qube 4 - row 2
           if( y==0 || y==1 || y==2 ){ qube4th[1].push( puzzleString[stringCount] ) }
           // qube 5 - row 2
@@ -392,6 +467,8 @@ class SudokuSolver {
           if( y==6 || y==7 || y==8 ){ qube6th[1].push( puzzleString[stringCount] ) }
 
         } else if( A2I[i] == 'F'){
+          row6.push( puzzleString[stringCount] )
+
           // qube 4 - row 3
           if( y==0 || y==1 || y==2 ){ qube4th[2].push( puzzleString[stringCount] ) }
           // qube 5 - row 3
@@ -400,6 +477,8 @@ class SudokuSolver {
           if( y==6 || y==7 || y==8 ){ qube6th[2].push( puzzleString[stringCount] ) }
 
         } else if( A2I[i] == 'G'){
+          row7.push( puzzleString[stringCount] )
+
           // qube 7 - row 1
           if( y==0 || y==1 || y==2 ){ qube7th[0].push( puzzleString[stringCount] ) }
           // qube 8 - row 1
@@ -408,6 +487,8 @@ class SudokuSolver {
           if( y==6 || y==7 || y==8 ){ qube9th[0].push( puzzleString[stringCount] ) }
 
         } else if( A2I[i] == 'H'){
+          row8.push( puzzleString[stringCount] )
+
           // qube 7 - row 2
           if( y==0 || y==1 || y==2 ){ qube7th[1].push( puzzleString[stringCount] ) }
           // qube 8 - row 2
@@ -416,6 +497,8 @@ class SudokuSolver {
           if( y==6 || y==7 || y==8 ){ qube9th[1].push( puzzleString[stringCount] ) }
 
         } else if( A2I[i] == 'I'){
+          row9.push( puzzleString[stringCount] )
+
           // qube 7 - row 3
           if( y==0 || y==1 || y==2 ){ qube7th[2].push( puzzleString[stringCount] ) }
           // qube 8 - row 3
@@ -431,12 +514,34 @@ class SudokuSolver {
     }
 
 
+    let rowInp = []
+
+    if(row == 'A'){
+      rowInp = row1
+    } else if(row == 'B'){
+      rowInp = row2
+    } else if(row == 'C'){
+      rowInp = row3
+    } else if(row == 'D'){
+      rowInp = row4
+    } else if(row == 'E'){
+      rowInp = row5
+    } else if(row == 'F'){
+      rowInp = row6
+    } else if(row == 'G'){
+      rowInp = row7
+    } else if(row == 'H'){
+      rowInp = row8
+    } else if(row == 'I'){
+      rowInp = row9
+    }
+
 
     let invalidSudo = false
 
     // check validation
       // qube1
-      if( (row == 'A' || row == 'B' || row == 'C') && ( column == 1 || column == 2 || column == 3) ){ 
+      if( (row == 'A' || row == 'B' || row == 'C') && ( column == 1 || column == 2 || column == 3) && rowInp[columnIndexArr] != value ){ 
         if( qube1st[0].includes( value ) == true ){ invalidSudo = true }
         if( qube1st[1].includes( value ) == true ){ invalidSudo = true }           
         if( qube1st[2].includes( value ) == true ){ invalidSudo = true }        
@@ -444,56 +549,56 @@ class SudokuSolver {
       }
 
       // qube2
-      if( (row == 'A' || row == 'B' || row == 'C') && ( column == 4 || column == 5 || column == 6) ){
+      if( (row == 'A' || row == 'B' || row == 'C') && ( column == 4 || column == 5 || column == 6) && rowInp[columnIndexArr] != value ){
         if( qube2nd[0].includes( value ) == true ){ invalidSudo = true }
         if( qube2nd[1].includes( value ) == true ){ invalidSudo = true }           
         if( qube2nd[2].includes( value ) == true ){ invalidSudo = true } 
       }
 
       // qube3
-      if( (row == 'A' || row == 'B' || row == 'C') && ( column == 7 || column == 8 || column == 9) ){
+      if( (row == 'A' || row == 'B' || row == 'C') && ( column == 7 || column == 8 || column == 9) && rowInp[columnIndexArr] != value ){
         if( qube3rd[0].includes( value ) == true ){ invalidSudo = true }
         if( qube3rd[1].includes( value ) == true ){ invalidSudo = true }           
         if( qube3rd[2].includes( value ) == true ){ invalidSudo = true } 
       }
 
       // qube4
-      if( (row == 'D' || row == 'E' || row == 'F') && ( column == 1 || column == 2 || column == 3) ){
+      if( (row == 'D' || row == 'E' || row == 'F') && ( column == 1 || column == 2 || column == 3) && rowInp[columnIndexArr] != value ){
         if( qube4th[0].includes( value ) == true ){ invalidSudo = true }
         if( qube4th[1].includes( value ) == true ){ invalidSudo = true }           
         if( qube4th[2].includes( value ) == true ){ invalidSudo = true } 
       }
 
       // qube5
-      if( (row == 'D' || row == 'E' || row == 'F') && ( column == 4 || column == 5 || column == 6) ){
+      if( (row == 'D' || row == 'E' || row == 'F') && ( column == 4 || column == 5 || column == 6) && rowInp[columnIndexArr] != value ){
         if( qube5th[0].includes( value ) == true ){ invalidSudo = true }
         if( qube5th[1].includes( value ) == true ){ invalidSudo = true }           
         if( qube5th[2].includes( value ) == true ){ invalidSudo = true } 
       }
 
       // qube6
-      if( (row == 'D' || row == 'E' || row == 'F') && ( column == 7 || column == 8 || column == 9) ){
+      if( (row == 'D' || row == 'E' || row == 'F') && ( column == 7 || column == 8 || column == 9) && rowInp[columnIndexArr] != value ){
         if( qube6th[0].includes( value ) == true ){ invalidSudo = true }
         if( qube6th[1].includes( value ) == true ){ invalidSudo = true }           
         if( qube6th[2].includes( value ) == true ){ invalidSudo = true } 
       }
 
       // qube7
-      if( (row == 'G' || row == 'H' || row == 'I') && ( column == 1 || column == 2 || column == 3) ){
+      if( (row == 'G' || row == 'H' || row == 'I') && ( column == 1 || column == 2 || column == 3) && rowInp[columnIndexArr] != value ){
         if( qube7th[0].includes( value ) == true ){ invalidSudo = true }
         if( qube7th[1].includes( value ) == true ){ invalidSudo = true }           
         if( qube7th[2].includes( value ) == true ){ invalidSudo = true } 
       }
 
       // qube8
-      if( (row == 'G' || row == 'H' || row == 'I') && ( column == 4 || column == 5 || column == 6) ){
+      if( (row == 'G' || row == 'H' || row == 'I') && ( column == 4 || column == 5 || column == 6) && rowInp[columnIndexArr] != value ){
         if( qube8th[0].includes( value ) == true ){ invalidSudo = true }
         if( qube8th[1].includes( value ) == true ){ invalidSudo = true }           
         if( qube8th[2].includes( value ) == true ){ invalidSudo = true } 
       }
 
       // qube9
-      if( (row == 'G' || row == 'H' || row == 'I') && ( column == 7 || column == 8 || column == 9) ){
+      if( (row == 'G' || row == 'H' || row == 'I') && ( column == 7 || column == 8 || column == 9) && rowInp[columnIndexArr] != value ){
         if( qube9th[0].includes( value ) == true ){ invalidSudo = true }
         if( qube9th[1].includes( value ) == true ){ invalidSudo = true }           
         if( qube9th[2].includes( value ) == true ){ invalidSudo = true } 
@@ -512,7 +617,7 @@ class SudokuSolver {
       console.log('qube8th '+ qube8th[0]+' / '+qube8th[1]+' / '+qube8th[2])
       console.log('qube9th '+ qube9th[0]+' / '+qube9th[1]+' / '+qube9th[2])
       */
-      console.log('invalidSudo '+ invalidSudo)
+      console.log('invalidSudo region '+ invalidSudo)
       return invalidSudo
   }
 
