@@ -887,13 +887,11 @@ class SudokuSolver {
     
 
 
-    
-    let stringIndex = 0
-
     let selectRow
+    let reverseRow
 
     const rowName = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I']
-    for(let g=0; g < 1; g++){ // rowName.length      
+    for(let g=0; g < 2; g++){ // rowName.length      
 
       for(let i=0; i < 9; i++){
 
@@ -914,32 +912,41 @@ class SudokuSolver {
 
         if(rowName[g] == 'A'){
           selectRow = row1
+          reverseRow = row1
         } else if(rowName[g] == 'B'){
           selectRow = row2
+          reverseRow = row2
         } else if(rowName[g] == 'C'){
           selectRow = row3
+          reverseRow = row3
         } else if(rowName[g] == 'D'){
           selectRow = row4
+          reverseRow = row4
         } else if(rowName[g] == 'E'){
           selectRow = row5
+          reverseRow = row5
         } else if(rowName[g] == 'F'){
           selectRow = row6
+          reverseRow = row6
         } else if(rowName[g] == 'G'){
           selectRow = row7
+          reverseRow = row7
         } else if(rowName[g] == 'H'){
           selectRow = row8
+          reverseRow = row8
         } else if(rowName[g] == 'I'){
           selectRow = row9
+          reverseRow = row9
         }
   
+        
+        console.log('fullString '+ fullString)
 
-        //console.log('fullString '+ fullString)
-
-        /*
+        
         console.log('^^^^^^^^^^^^^ ' + selectRow[i])
         console.log('vvvvvvvvv ' + rowName[g])
         console.log(i+1 +' iiiiiiiiiiiii ')
-        */
+        
 
         
         if( selectRow[i] != '.'){
@@ -960,12 +967,13 @@ class SudokuSolver {
             const checkInRow = this.checkRowPlacement(fullString, rowName[g], i+1, m+1)
             const checkInCol = this.checkColPlacement(fullString, rowName[g], i+1, m+1)
             const checkInRegion = this.checkRegionPlacement(fullString, rowName[g], i+1, m+1)
-
+            /*
             if(i+1 == 8){
               console.log('b11111111 ' + checkInRow)
               console.log('b22222222 ' + checkInCol)
               console.log('b33333333 ' + checkInRegion)
             }
+            */
             
 
             if(checkInRow == false && checkInCol == false && checkInRegion == false){
@@ -980,42 +988,181 @@ class SudokuSolver {
         }
         
 
-        stringIndex++
+        
 
         // end of loop
-        if( i+1 == 9){
+        if( i+1 == 9){ console.log( 'time time time time '+ rowName[g])
           if(rowName[g] == 'A'){
             row1 = selectRow
-          } else if(rowName[g] == 'B'){
-            row2 = selectRow
-          } else if(rowName[g] == 'C'){
-            row3 = selectRow
-          } else if(rowName[g] == 'D'){
-            row4 = selectRow
-          } else if(rowName[g] == 'E'){
-            row5 = selectRow
-          } else if(rowName[g] == 'F'){
-            row6 = selectRow
-          } else if(rowName[g] == 'G'){
-            row7 = selectRow
-          } else if(rowName[g] == 'H'){
-            row8 = selectRow
-          } else if(rowName[g] == 'I'){
-            row9 = selectRow
+          } else {
+            console.log('second ooooooooooonnnnnnnnnneeeeeeeee')
           }
+          /*
+          if(selectRow.includes('.') == false){
+            if(rowName[g] == 'A'){
+              row1 = selectRow
+            } else if(rowName[g] == 'B'){
+              row2 = selectRow
+            } else if(rowName[g] == 'C'){
+              row3 = selectRow
+            } else if(rowName[g] == 'D'){
+              row4 = selectRow
+            } else if(rowName[g] == 'E'){
+              row5 = selectRow
+            } else if(rowName[g] == 'F'){
+              row6 = selectRow
+            } else if(rowName[g] == 'G'){
+              row7 = selectRow
+            } else if(rowName[g] == 'H'){
+              row8 = selectRow
+            } else if(rowName[g] == 'I'){
+              row9 = selectRow
+            }
+          } else {
+            console.log('second rowwwwwwwwwww')
+            //reverseLoop()
+          }
+          */
+          
         }
         
       }
     }
 
     allArray()
-    console.log('return puzzzz '+ fullString)
+    console.log('return puzzzz '+ fullString )
     
-
+    function reverseLoop(){       
+      for(let i=9; i > 0; i--){ console.log(i-1 + ' iteration ')
+        // console.log(' fullString '+ fullString)
+        /*
+        allArray()
+        
+        row1 = []
+        row2 = []
+        row3 = []
+        row4 = []
+        row5 = []
+        row6 = []
+        row7 = []
+        row8 = []
+        row9 = []
+        
+        splitPuzzle( fullString )
+  
+  
+        if(rowName[g] == 'A'){
+          selectRow = row1
+          reverseRow = row1
+        } else if(rowName[g] == 'B'){
+          selectRow = row2
+          reverseRow = row2
+        } else if(rowName[g] == 'C'){
+          selectRow = row3
+          reverseRow = row3
+        } else if(rowName[g] == 'D'){
+          selectRow = row4
+          reverseRow = row4
+        } else if(rowName[g] == 'E'){
+          selectRow = row5
+          reverseRow = row5
+        } else if(rowName[g] == 'F'){
+          selectRow = row6
+          reverseRow = row6
+        } else if(rowName[g] == 'G'){
+          selectRow = row7
+          reverseRow = row7
+        } else if(rowName[g] == 'H'){
+          selectRow = row8
+          reverseRow = row8
+        } else if(rowName[g] == 'I'){
+          selectRow = row9
+          reverseRow = row9
+        }
+        */
+  
+        //console.log('fullString '+ fullString)
+        /*
+        console.log('reverse looooooop')
+        console.log('^^^^^^^^^^^^^ ' + reverseRow[i-1])
+        console.log('vvvvvvvvv ' + rowName[g])
+        console.log(i-1 +' iiiiiiiiiiiii ')
+        */
+  
+        /*
+        if( reverseRow[i-1] != '.'){
+          const checkInRow = this.checkRowPlacement(fullString, rowName[g], i-1, reverseRow[i-1])
+          const checkInCol = this.checkColPlacement(fullString, rowName[g], i-1, reverseRow[i-1])
+          const checkInRegion = this.checkRegionPlacement(fullString, rowName[g], i-1, reverseRow[i-1])
+          console.log('reverse ---------------- ' + checkInRow)
+          console.log('reverse >>>>>>>>>>>>>> ' + checkInCol)
+          console.log('reverse ```````````` ' + checkInRegion)
+  
+          if(checkInRow == true || checkInCol == true || checkInRegion == true){
+            console.log('invalid puzzle')
+            return
+          }   
+        }
+        else {
+          for(let m=0; m < 9; m++){
+            const checkInRow = this.checkRowPlacement(fullString, rowName[g], i-1, m+1)
+            const checkInCol = this.checkColPlacement(fullString, rowName[g], i-1, m+1)
+            const checkInRegion = this.checkRegionPlacement(fullString, rowName[g], i-1, m+1)
+  
+            
+              console.log('reverse b11111111 ' + checkInRow)
+              console.log('reverse b22222222 ' + checkInCol)
+              console.log('reverse b33333333 ' + checkInRegion)
+            
+            
+  
+            if(checkInRow == false && checkInCol == false && checkInRegion == false){
+              console.log('added val ')
+              console.log(m+1)
+              
+              reverseRow[i-1] = m+1
+  
+              break           
+            } 
+          }        
+        }
+        
+        */
+        
+        /*
+        // end of loop
+        if( i+1 == 1){
+          if(selectRow.includes('.') == false){
+            if(rowName[g] == 'A'){
+              row1 = selectRow
+            } else if(rowName[g] == 'B'){
+              row2 = selectRow
+            } else if(rowName[g] == 'C'){
+              row3 = selectRow
+            } else if(rowName[g] == 'D'){
+              row4 = selectRow
+            } else if(rowName[g] == 'E'){
+              row5 = selectRow
+            } else if(rowName[g] == 'F'){
+              row6 = selectRow
+            } else if(rowName[g] == 'G'){
+              row7 = selectRow
+            } else if(rowName[g] == 'H'){
+              row8 = selectRow
+            } else if(rowName[g] == 'I'){
+              row9 = selectRow
+            }
+          }
+        }
+        */
+      }
+    }
     // return invalidSudo
     // 769235418851496372432178956174569283395842761628713549283657194516924837947381625
     
   }
+
+  
 }
 
 module.exports = SudokuSolver;
