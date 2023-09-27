@@ -73,7 +73,7 @@ class SudokuSolver {
           match.push( value )
         }
       }  
-      console.log('match length '+ match.length)
+      // console.log('match length '+ match.length)
       
       if(match.length > 1){
         return true
@@ -146,7 +146,7 @@ class SudokuSolver {
     }
     
 
-    console.log('invalidSudo in row '+ invalidSudo)
+    // console.log('invalidSudo in row '+ invalidSudo)
     return invalidSudo
   }
 
@@ -243,7 +243,7 @@ class SudokuSolver {
 
     let invalidSudo = false
 
-    console.log('column one '+ column1)
+    //console.log('column one '+ column1)
 
     // columns
     function checkInColumn(row, column, value){ 
@@ -254,7 +254,7 @@ class SudokuSolver {
           match.push( value )
         }
       }  
-      console.log('match length column '+ match.length)
+      //console.log('match length column '+ match.length)
       
       if(match.length > 1){
         return true
@@ -342,7 +342,7 @@ class SudokuSolver {
       }
     }
     
-    console.log('invalidSudo in column '+ invalidSudo)
+    //console.log('invalidSudo in column '+ invalidSudo)
     return invalidSudo
   }
 
@@ -486,7 +486,7 @@ class SudokuSolver {
             match.push( value )
           }
         }  
-        console.log('match length qube1st '+ match.length)
+        //console.log('match length qube1st '+ match.length)
         
         if(match.length > 1){
           return true
@@ -526,7 +526,7 @@ class SudokuSolver {
             match.push( value )
           }
         }  
-        console.log('match length qube2nd '+ match.length)
+        //console.log('match length qube2nd '+ match.length)
         
         if(match.length > 1){
           return true
@@ -565,7 +565,7 @@ class SudokuSolver {
             match.push( value )
           }
         }  
-        console.log('match length qube3rd '+ match.length)
+        //console.log('match length qube3rd '+ match.length)
         
         if(match.length > 1){
           return true
@@ -605,7 +605,7 @@ class SudokuSolver {
             match.push( value )
           }
         }  
-        console.log('match length qube4th '+ match.length)
+        //console.log('match length qube4th '+ match.length)
         
         if(match.length > 1){
           return true
@@ -645,7 +645,7 @@ class SudokuSolver {
             match.push( value )
           }
         }  
-        console.log('match length qube5th '+ match.length)
+        //console.log('match length qube5th '+ match.length)
         
         if(match.length > 1){
           return true
@@ -685,7 +685,7 @@ class SudokuSolver {
             match.push( value )
           }
         }  
-        console.log('match length qube6th '+ match.length)
+        //console.log('match length qube6th '+ match.length)
         
         if(match.length > 1){
           return true
@@ -725,7 +725,7 @@ class SudokuSolver {
             match.push( value )
           }
         }  
-        console.log('match length qube7th '+ match.length)
+        //console.log('match length qube7th '+ match.length)
         
         if(match.length > 1){
           return true
@@ -765,7 +765,7 @@ class SudokuSolver {
             match.push( value )
           }
         }  
-        console.log('match length qube8th '+ match.length)
+        //console.log('match length qube8th '+ match.length)
         
         if(match.length > 1){
           return true
@@ -805,7 +805,7 @@ class SudokuSolver {
             match.push( value )
           }
         }  
-        console.log('match length qube9th '+ match.length)
+        //console.log('match length qube9th '+ match.length)
         
         if(match.length > 1){
           return true
@@ -815,7 +815,7 @@ class SudokuSolver {
       }
 
       
-      console.log('invalidSudo region '+ invalidSudo)
+      //console.log('invalidSudo region '+ invalidSudo)
       return invalidSudo
   }
 
@@ -826,30 +826,55 @@ class SudokuSolver {
     let returnPuzzle = puzzleString
 
     const rowName = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I']
-    for(let i=0; i < 1; i++){
-      console.log('^^^^^^^^^^^^^ ' + puzzleString[stringIndex])
-      console.log('vvvvvvvvv ' + rowName[i])
-      console.log('iiiiiiiiiiiii ' + i)
+    for(let g=0; g < 2; g++){ // rowName.length
 
-      if(puzzleString[stringIndex] != '.'){
-        const checkInRow = this.checkRowPlacement(puzzleString, rowName[i], i+1, puzzleString[stringIndex])
-        const checkInCol = this.checkColPlacement(puzzleString, rowName[i], i+1, puzzleString[stringIndex])
-        const checkInRegion = this.checkRegionPlacement(puzzleString, rowName[i], i+1, puzzleString[stringIndex])
-        console.log('---------------- ' + checkInRow)
-        console.log('>>>>>>>>>>>>>> ' + checkInCol)
-        console.log('```````````` ' + checkInRegion)
+      for(let i=0; i < 9; i++){
+        console.log('^^^^^^^^^^^^^ ' + returnPuzzle[stringIndex])
+        console.log('vvvvvvvvv ' + rowName[g])
+        console.log(i+1 +' iiiiiiiiiiiii ')
 
-        if(checkInRow == true || checkInCol == true || checkInRegion == true){
-          console.log('invalid puzzle')
-        }        
+        if(returnPuzzle[stringIndex] != '.'){
+          const checkInRow = this.checkRowPlacement(returnPuzzle, rowName[g], i+1, returnPuzzle[stringIndex])
+          const checkInCol = this.checkColPlacement(returnPuzzle, rowName[g], i+1, returnPuzzle[stringIndex])
+          const checkInRegion = this.checkRegionPlacement(returnPuzzle, rowName[g], i+1, returnPuzzle[stringIndex])
+          console.log('---------------- ' + checkInRow)
+          console.log('>>>>>>>>>>>>>> ' + checkInCol)
+          console.log('```````````` ' + checkInRegion)
+
+          if(checkInRow == true || checkInCol == true || checkInRegion == true){
+            console.log('invalid puzzle')
+            return
+          }   
+        }
+        else {
+          for(let m=0; m < 9; m++){
+            const checkInRow = this.checkRowPlacement(returnPuzzle, rowName[g], i+1, m+1)
+            const checkInCol = this.checkColPlacement(returnPuzzle, rowName[g], i+1, m+1)
+            const checkInRegion = this.checkRegionPlacement(returnPuzzle, rowName[g], i+1, m+1)
+
+            if(i+1 == 8){
+              console.log('b11111111 ' + checkInRow)
+              console.log('b22222222 ' + checkInCol)
+              console.log('b33333333 ' + checkInRegion)
+            }
+            
+
+            if(checkInRow == false && checkInCol == false && checkInRegion == false){
+              console.log('added val ')
+              console.log(m+1)
+              
+              returnPuzzle = returnPuzzle.replace(/\./, m+1)
+              break           
+            } 
+          }        
+        }
+
+        stringIndex++
+        
       }
-      else {
-
-      }
-
-      stringIndex++
-      
     }
+
+    console.log('return puzzzz '+ returnPuzzle)
     /*
     const row1 = []
     const row2 = []
