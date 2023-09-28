@@ -152,7 +152,7 @@ class SudokuSolver {
 
   checkRowPlacementInverse(puzzleString, row, column, values) {
     let value = values.toString()
-    const columnIndexArr = column - 1
+    const columnIndexArr = column
 
     const row1 = []
     const row2 = []
@@ -208,19 +208,16 @@ class SudokuSolver {
     let invalidSudo = false
 
     // rows
-    function checkInRow(row, column, value){ 
-      /*
-      if(row[column] != value){ console.log('jjjjjjjj '+ row+' col '+ row[column]+ ' val '+ value)
-        return row.includes( value )
-      }
-      */
+    function checkInRow(row, column, value){ console.log('rrrrow '+ row+ ' column '+ column + ' value '+ value)
+    console.log( row[column] )
+      
       const match = []
-      for(let i=0; i < row.length; i++){
-        if( row[i] == value){
+      for(let i=9; i > 0; i--){
+        if( row[i-1] == value){
           match.push( value )
         }
       }  
-      // console.log('match length '+ match.length)
+      console.log('match length '+ match.length)
       
       if(match.length > 1){
         return true
@@ -493,7 +490,7 @@ class SudokuSolver {
     return invalidSudo
   }
 
-
+  
 
   checkRegionPlacement(puzzleString, row, column, values) {
     let value = values.toString()
@@ -966,6 +963,8 @@ class SudokuSolver {
       return invalidSudo
   }
 
+  
+
 
   solve(puzzleString) {
     let row1 = []
@@ -1161,8 +1160,9 @@ class SudokuSolver {
             fullString = string2Submit
 
             // reverseLoop( rowName[g] )
-            for(let v=9; v > 0; v--){ console.log(v-1 + ' iteration ')
-        
+            for(let v=9; v > 0; v--){ console.log(v + ' iteration ')
+            console.log('variable v~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ '+ v) 
+
               allArray()
               
               row1 = []
@@ -1198,20 +1198,20 @@ class SudokuSolver {
                 selectRow = row9
               }
               
-        
+              
               //console.log('fullString '+ fullString)
               
               console.log('reverse looooooop')
-              console.log('^^^^^^^^^^^^^ ' + selectRow[v-1])
-              console.log('vvvvvvvvv ' + rowName[g])
-              console.log(v-1 +' iiiiiiiiiiiii ')
+              console.log('^^^^^^^^^^^^^ value ' + selectRow[v-1])
+              console.log('vvvvvvvvv rowname ' + rowName[g])
+              console.log(v +' iiiiiiiiiiiii column')
 
               
               
-              if( selectRow[v-1] != '.'){          
-                const checkInRow = this.checkRowPlacement(fullString, rowName[g], v-1, selectRow[v-1])
-                const checkInCol = this.checkColPlacement(fullString, rowName[g], v-1, selectRow[v-1])
-                const checkInRegion = this.checkRegionPlacement(fullString, rowName[g], v-1, selectRow[v-1])
+              if( selectRow[v-1] != '.'){      
+                const checkInRow = this.checkRowPlacementInverse(fullString, rowName[g], v-1, selectRow[v-1])
+                const checkInCol = this.checkColPlacement(fullString, rowName[g], v, selectRow[v-1])
+                const checkInRegion = this.checkRegionPlacement(fullString, rowName[g], v, selectRow[v-1])
                 console.log('reverse ---------------- ' + checkInRow)
                 console.log('reverse >>>>>>>>>>>>>> ' + checkInCol)
                 console.log('reverse ```````````` ' + checkInRegion)
@@ -1226,9 +1226,9 @@ class SudokuSolver {
               else {
                 
                 for(let m=0; m < 9; m++){
-                  const checkInRow = this.checkRowPlacement(fullString, rowName[g], v-1, m+1)
-                  const checkInCol = this.checkColPlacement(fullString, rowName[g], v-1, m+1)
-                  const checkInRegion = this.checkRegionPlacement(fullString, rowName[g], v-1, m+1)
+                  const checkInRow = this.checkRowPlacementInverse(fullString, rowName[g], v-1, m+1)
+                  const checkInCol = this.checkColPlacement(fullString, rowName[g], v, m+1)
+                  const checkInRegion = this.checkRegionPlacement(fullString, rowName[g], v, m+1)
         
                   
                     console.log('reverse b11111111 ' + checkInRow)
