@@ -1159,12 +1159,29 @@ class SudokuSolver {
 
             fullString = string2Submit
 
+            console.log('fffuuuuulllll Sssttttrrrrriiiiiiinnnnnngggg '+ fullString )
+
+            row1 = []
+            row2 = []
+            row3 = []
+            row4 = []
+            row5 = []
+            row6 = []
+            row7 = []
+            row8 = []
+            row9 = []
+            
+            splitPuzzle( fullString )
+
+
             // reverseLoop( rowName[g] )
+            
             for(let v=9; v > 0; v--){ console.log(v + ' iteration ')
             console.log('variable v~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ '+ v) 
 
               allArray()
               
+
               row1 = []
               row2 = []
               row3 = []
@@ -1176,6 +1193,17 @@ class SudokuSolver {
               row9 = []
               
               splitPuzzle( fullString )
+
+
+              console.log('row1 '+ row1 )
+              console.log('row2 '+ row2 )
+              console.log('row3 '+ row3 )
+              console.log('row4 '+ row4 )
+              console.log('row5 '+ row5 )
+              console.log('row6 '+ row6 )
+              console.log('row7 '+ row7 )
+              console.log('row8 '+ row8 )
+              console.log('row9 '+ row9 )
               
                       
               if(rowName[g] == 'A'){
